@@ -60,11 +60,20 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1500);
+    
+    // Construct the mailto URL
+    const recipient = "suresh.my1989@gmail.com";
+    const mailtoSubject = encodeURIComponent(form.subject);
+    const mailtoBody = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+    );
+    
+    // Open the default email client
+    window.location.href = `mailto:${recipient}?subject=${mailtoSubject}&body=${mailtoBody}`;
+    
+    // Show success state
+    setSubmitted(true);
+    setForm({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
