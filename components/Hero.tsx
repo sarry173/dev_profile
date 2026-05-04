@@ -44,7 +44,7 @@ export default function Hero() {
   }, [displayed, isDeleting, roleIndex]);
 
   return (
-    <section className="relative min-h-screen hero-bg grid-pattern flex flex-col items-center justify-center overflow-hidden px-6">
+    <section className="relative min-h-screen hero-bg grid-pattern flex flex-col items-center pt-24 md:pt-32 overflow-hidden px-6">
       {/* Decorative orbs */}
       <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-[#6c63ff]/10 blur-3xl animate-pulse-glow pointer-events-none" />
       <div
@@ -53,7 +53,7 @@ export default function Hero() {
       />
 
       {/* Floating code snippets */}
-      <div className="absolute top-20 right-10 opacity-10 font-mono text-xs text-[#6c63ff] rotate-12 hidden lg:block select-none">
+      <div className="absolute top-32 right-10 opacity-10 font-mono text-xs text-[#6c63ff] rotate-12 hidden lg:block select-none">
         <div>// Mobile + Web</div>
         <div>const stack = [</div>
         <div>&nbsp;&nbsp;&apos;Android&apos;, &apos;Flutter&apos;,</div>
@@ -66,7 +66,7 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center pb-28">
+      <div className="relative z-10 max-w-4xl mx-auto text-center mt-auto mb-auto pb-20">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00d4aa]/10 border border-[#00d4aa]/20 text-[#00d4aa] text-sm font-medium mb-8 animate-float">
           <span className="w-2 h-2 rounded-full bg-[#00d4aa] animate-pulse" />
