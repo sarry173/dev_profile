@@ -9,6 +9,10 @@ const skills = [
   { label: "React Native",            level: 78 },
   { label: "React.js / Next.js",      level: 84 },
   { label: "Angular",                 level: 75 },
+  { label: "LLM Integration (Claude/OpenAI)", level: 88 },
+  { label: "RAG Pipelines (LangChain)", level: 85 },
+  { label: "MCP Server Development", level: 83 },
+  { label: "Agentic AI", level: 82 },
 ];
 
 const stats = [
@@ -63,9 +67,17 @@ export default function About() {
               <span className="text-[#1b63e8] font-semibold">React.js, Next.js</span>, and{" "}
               <span className="text-[#1b63e8] font-semibold">Angular</span> on the web.
             </p>
-            <p className="text-[#4b5563] leading-relaxed mb-8">
+            <p className="text-[#4b5563] leading-relaxed mb-4">
               Led SDLC for 20+ enterprise apps for Fortune 500 clients including Reliance Industries.
               I champion clean architecture, performance-first thinking, and team mentorship.
+            </p>
+            <p className="text-[#4b5563] leading-relaxed mb-8">
+              Beyond mobile and web, I&apos;m deeply invested in AI engineering — building RAG pipelines 
+              that ground LLMs in enterprise knowledge, designing agentic systems that reason and act 
+              autonomously, building MCP (Model Context Protocol) servers, and integrating generative 
+              AI into production mobile and web applications. I work across the full AI stack: from 
+              prompt engineering and vector databases to multi-agent orchestration, all the way to 
+              agentic developer tooling powered by Anthropic Claude.
             </p>
 
             {/* Quick info chips */}

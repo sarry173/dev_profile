@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Suresh Kumar — Senior Mobile Engineer & Full Stack Developer",
   description:
-    "Senior Mobile Engineer (Android/Flutter) with 12+ years of experience. Full-stack capability across React Native, React.js, Next.js, and Angular. Senior Manager at Reliance Jio, open to senior engineering and tech lead roles.",
+    "Full Stack Developer with 12+ years of experience. Senior Manager at Reliance Jio. Expert in Android, Flutter, React Native, React.js, Next.js, Angular — and AI Engineering including RAG pipelines, Agentic AI, MCP servers, and LLM-powered applications built on Anthropic Claude.",
   keywords: [
     "Senior Mobile Engineer",
     "Android Developer",
@@ -39,12 +39,31 @@ export const metadata: Metadata = {
     "mobile development India",
     "senior engineer Mumbai",
     "enterprise mobile apps",
+    "AI Engineer",
+    "Generative AI",
+    "LLM",
+    "RAG",
+    "LangChain",
+    "LlamaIndex",
+    "Agentic AI",
+    "Multi-Agent Systems",
+    "OpenAI",
+    "Anthropic",
+    "Claude API",
+    "MCP",
+    "Model Context Protocol",
+    "Vector Database",
+    "Pinecone",
+    "Prompt Engineering",
+    "LLM Integration",
+    "FastAPI",
+    "Code Migration Agent",
   ],
   authors: [{ name: "Suresh Kumar" }],
   openGraph: {
     title: "Suresh Kumar — Senior Mobile Engineer & Full Stack Developer",
     description:
-      "12+ years shipping enterprise mobile & web apps. Android/Flutter expert + full-stack web. Senior Manager at Reliance Jio. Open to senior roles.",
+      "Full Stack Developer with 12+ years of experience. Senior Manager at Reliance Jio. Expert in Android, Flutter, React Native, React.js, Next.js, Angular — and AI Engineering including RAG pipelines, Agentic AI, MCP servers, and LLM-powered applications built on Anthropic Claude.",
     type: "website",
   },
 };

@@ -4,14 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/SocialIcons";
 
-type ProjectType = "mobile" | "web";
+type ProjectType = "mobile" | "web" | "ai";
 type Project = {
   title: string; description: string; image: string; tags: string[];
   live: string | null; featured: boolean; color: string; bg: string;
-  client: string; type: ProjectType;
+  client: string; type: ProjectType; highlight?: boolean;
 };
 
 const projects: Project[] = [
+  { title: "Code Migration Agent + MCP Server", description: "An autonomous AI agent and MCP (Model Context Protocol) server that automatically migrates codebases to their latest framework/library versions. Powered by the Anthropic Claude API — the agent analyzes existing code, detects deprecated patterns, understands breaking changes, and rewrites code to be fully compliant with the latest version. The MCP server exposes migration tools that can be consumed by any MCP-compatible AI client (e.g. Claude Desktop, Cursor).", image: "⚙️", tags: ["Anthropic Claude API", "MCP", "Agentic AI", "Code Analysis", "Python", "AST Parsing"], live: null, featured: true, color: "#7c3aed", bg: "#f3e8ff", client: "Personal / Open Source", type: "ai", highlight: true },
+  { title: "RAG-based Knowledge Assistant", description: "An intelligent document Q&A system built using Retrieval-Augmented Generation. Ingests PDFs, docs, and web content into a vector store, then answers queries with grounded, source-cited responses using an LLM. Supports multi-turn conversations with context memory.", image: "🧠", tags: ["LangChain", "Pinecone", "OpenAI GPT-4", "FastAPI", "Python"], live: null, featured: true, color: "#7c3aed", bg: "#f3e8ff", client: "Personal / Enterprise", type: "ai" },
+  { title: "Agentic AI Workflow Engine", description: "A multi-step autonomous AI agent capable of reasoning, tool use, and decision-making across complex tasks. Built with LangChain agents and custom tools — integrates web search, code execution, and API calls within a single agentic loop.", image: "🤖", tags: ["LangChain Agents", "Claude API", "Tool Use", "ReAct Pattern", "Python"], live: null, featured: true, color: "#7c3aed", bg: "#f3e8ff", client: "Personal / Enterprise", type: "ai" },
+  { title: "AI-powered Mobile Assistant", description: "Integrated an LLM-based conversational assistant into an enterprise Android/Flutter app. Users query data, get summaries, and trigger actions via natural language — bridging mobile UX with generative AI capabilities via a FastAPI backend.", image: "📱", tags: ["LLM Integration", "Android / Flutter", "FastAPI", "REST API", "Kotlin"], live: null, featured: false, color: "#7c3aed", bg: "#f3e8ff", client: "Enterprise", type: "ai" },
   { title: "LEARNET-RIL", description: "Video and text-based interactive learning platform for Reliance employees to share knowledge, success stories, and connect with subject-matter experts.", image: "🎓", tags: ["Android", "Kotlin", "SQLite", "ExoPlayer", "Firebase"], live: "https://play.google.com/store/apps/details?id=com.ril.learnet", featured: true, color: "#1b63e8", bg: "#eef3ff", client: "Reliance Industries", type: "mobile" },
   { title: "Mission Kurukshetra", description: "Flutter platform for Reliance employees to submit innovative ideas and get rewarded by the Reliance Foundation — with rich media and offline support.", image: "💡", tags: ["Flutter", "Dart", "SOAP", "Firebase", "Fabric"], live: "https://play.google.com/store/apps/details?id=com.ril.mku", featured: true, color: "#f5b800", bg: "#fffbeb", client: "Reliance Industries", type: "mobile" },
   { title: "Share-A-Ride", description: "Carpooling app for Reliance employees using intelligent route-matching and real-time GPS tracking with verified colleague verification.", image: "🚗", tags: ["Android", "Kotlin", "Firebase", "Google Maps", "FCM"], live: "https://play.google.com/store/apps/details?id=com.ril.shareAride", featured: true, color: "#ef4444", bg: "#fef2f2", client: "Reliance Industries", type: "mobile" },
@@ -28,7 +32,7 @@ const projects: Project[] = [
   { title: "HR Self-Service Web App", description: "Next.js web application for employees to access HR services — payslips, leave management, on-boarding checklists, and tax declarations.", image: "🏢", tags: ["Next.js", "React.js", "TypeScript", "SAP API"], live: null, featured: false, color: "#f5b800", bg: "#fffbeb", client: "Reliance Jio", type: "web" },
 ];
 
-type Filter = "all" | "featured" | "mobile" | "web";
+type Filter = "all" | "featured" | "mobile" | "web" | "ai";
 
 export default function Projects() {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,6 +52,7 @@ export default function Projects() {
     filter === "featured" ? projects.filter((p) => p.featured) :
     filter === "mobile"   ? projects.filter((p) => p.type === "mobile") :
     filter === "web"      ? projects.filter((p) => p.type === "web") :
+    filter === "ai"       ? projects.filter((p) => p.type === "ai") :
     projects;
 
   const tabs: { key: Filter; label: string }[] = [
@@ -55,6 +60,7 @@ export default function Projects() {
     { key: "featured", label: "⭐ Featured" },
     { key: "mobile",   label: "📱 Mobile" },
     { key: "web",      label: "🌐 Web" },
+    { key: "ai",       label: "🤖 AI" },
   ];
 
   return (
@@ -94,7 +100,7 @@ export default function Projects() {
           {filtered.map((p, i) => (
             <div
               key={p.title}
-              className={`group rounded-2xl border border-[#e2e8f0] bg-white hover:border-[#1b63e8]/25 hover:shadow-lg transition-all duration-300 overflow-hidden hover:-translate-y-1 ${
+              className={`group rounded-2xl border ${p.highlight ? 'border-[#7c3aed] ring-1 ring-[#7c3aed]/30 shadow-[#7c3aed]/10 shadow-lg' : 'border-[#e2e8f0] bg-white hover:border-[#1b63e8]/25 hover:shadow-lg'} transition-all duration-300 overflow-hidden hover:-translate-y-1 ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${i * 55}ms` }}
@@ -112,12 +118,19 @@ export default function Projects() {
                     {p.image}
                   </div>
                   <div className="flex flex-col items-end gap-1">
-                    <span
-                      className="text-xs px-2 py-0.5 rounded-md font-mono font-semibold"
-                      style={{ background: p.bg, color: p.color }}
-                    >
-                      {p.type === "mobile" ? "📱 Mobile" : "🌐 Web"}
-                    </span>
+                    <div className="flex gap-2">
+                      {p.highlight && (
+                        <span className="text-xs px-2 py-0.5 rounded-md font-mono font-bold bg-[#f5b800]/10 text-[#f5b800] border border-[#f5b800]/20">
+                          ⭐ Featured
+                        </span>
+                      )}
+                      <span
+                        className="text-xs px-2 py-0.5 rounded-md font-mono font-semibold"
+                        style={{ background: p.bg, color: p.color }}
+                      >
+                        {p.type === "mobile" ? "📱 Mobile" : p.type === "web" ? "🌐 Web" : "🤖 AI"}
+                      </span>
+                    </div>
                     <span className="text-xs text-[#9ca3af] font-mono truncate max-w-[110px] text-right">
                       {p.client}
                     </span>

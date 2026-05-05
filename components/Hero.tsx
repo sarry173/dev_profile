@@ -8,6 +8,7 @@ import Image from "next/image";
 
 const roles = [
   "Senior Mobile Engineer",
+  "🤖 AI & GenAI Engineer",
   "Android & Kotlin Expert",
   "Flutter Developer",
   "React Native Engineer",
@@ -16,11 +17,11 @@ const roles = [
 ];
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex]   = useState(0);
-  const [displayed, setDisplayed]   = useState("");
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
-  const [imgError, setImgError]     = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
     const current = roles[roleIndex];
@@ -75,10 +76,9 @@ export default function Hero() {
 
           {/* Description */}
           <p className="text-[#374151] text-lg leading-relaxed mb-8 max-w-lg">
-            Building enterprise-grade mobile &amp; web apps for Fortune 500 clients.
-            Expert in <strong className="text-[#1b63e8] font-semibold">Android · Flutter</strong> and
-            full-stack web with <strong className="text-[#1b63e8] font-semibold">React · Next.js</strong> —
-            20+ apps shipped across 12+ years.
+            Full Stack Developer bridging mobile, web, and intelligent AI systems — 
+            with hands-on expertise in RAG pipelines, agentic AI, MCP servers, and 
+            LLM-powered applications.
           </p>
 
           {/* CTAs */}
@@ -104,10 +104,10 @@ export default function Hero() {
           <div className="flex items-center gap-3">
             {[
               { icon: LinkedinIcon, href: "https://www.linkedin.com/in/suresh-kumar-14726a74/", label: "LinkedIn" },
-              { icon: GithubIcon,   href: "https://github.com/suresh-kumar",                  label: "GitHub" },
+              { icon: GithubIcon, href: "https://github.com/sarry173", label: "GitHub" },
               { icon: StackOverflowIcon, href: "https://stackoverflow.com/users/3367381/suresh-kum", label: "Stack Overflow" },
-              { icon: Mail,  href: "mailto:suresh.my1989@gmail.com", label: "Email" },
-              { icon: Phone, href: "tel:+919867699779",              label: "Phone" },
+              { icon: Mail, href: "mailto:suresh.my1989@gmail.com", label: "Email" },
+              { icon: Phone, href: "tel:+919867699779", label: "Phone" },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -163,7 +163,7 @@ export default function Hero() {
             {/* Years badge */}
             <div className="absolute -bottom-4 -left-4 z-20 w-20 h-20 rounded-2xl bg-[#f5b800] shadow-lg flex flex-col items-center justify-center rotate-[-4deg] animate-float">
               <span className="text-2xl font-black text-[#111827] leading-none">12+</span>
-              <span className="text-[9px] font-bold text-[#111827]/70 uppercase tracking-wide leading-tight text-center">Years<br/>Exp.</span>
+              <span className="text-[9px] font-bold text-[#111827]/70 uppercase tracking-wide leading-tight text-center">Years<br />Exp.</span>
             </div>
 
             {/* Available badge */}

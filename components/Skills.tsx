@@ -1,56 +1,68 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Smartphone, Globe, Code2, Layers, Database, Wrench } from "lucide-react";
+import { FaAndroid, FaReact, FaAngular, FaUsersCog, FaRobot } from "react-icons/fa";
+import { SiFlutter, SiNextdotjs } from "react-icons/si";
 
 const services = [
   {
-    icon: Smartphone,
+    icon: FaAndroid,
     title: "Android Development",
     desc: "Native Android apps in Kotlin/Java using MVVM, Jetpack, Room, and SAP SDK — from SDK 2.1 through modern architectures.",
-    color: "#1b63e8",
-    bg: "#eef3ff",
+    color: "#3DDC84",
+    bg: "#eafaf1",
   },
   {
-    icon: Layers,
+    icon: SiFlutter,
     title: "Flutter / Cross-Platform",
-    desc: "High-fidelity Flutter apps with BLoC state management, Firebase, platform channels, and Play Store deployments.",
-    color: "#f5b800",
-    bg: "#fffbeb",
+    desc: "High-fidelity Flutter apps with BLoC/GetX state management, Firebase, platform channels, and Play Store deployments.",
+    color: "#02569B",
+    bg: "#e1f0fa",
   },
   {
-    icon: Smartphone,
+    icon: FaReact,
     title: "React Native",
     desc: "Cross-platform mobile apps with React Native, Expo, Redux, and deep integration with native device APIs.",
     color: "#61dafb",
     bg: "#ecfeff",
   },
   {
-    icon: Code2,
+    icon: SiNextdotjs,
     title: "React.js / Next.js",
     desc: "Modern web frontends with React.js hooks, Next.js App Router, SSR/SSG, and Tailwind CSS — deployed on Vercel.",
-    color: "#1b63e8",
-    bg: "#eef3ff",
+    color: "#111827",
+    bg: "#f3f4f6",
   },
   {
-    icon: Globe,
+    icon: FaAngular,
     title: "Angular",
     desc: "Enterprise Angular dashboards with TypeScript, RxJS, Angular Material, NgRx state, and REST/GraphQL APIs.",
     color: "#dd0031",
     bg: "#fef2f2",
   },
   {
-    icon: Wrench,
+    icon: FaUsersCog,
     title: "Tech Leadership",
     desc: "End-to-end SDLC ownership — architecture design, SonarQube/PMD code quality, team mentoring, and stakeholder communication.",
     color: "#f5b800",
     bg: "#fffbeb",
+  },
+  {
+    icon: FaRobot,
+    title: "AI / GenAI",
+    desc: "Building MCP servers, autonomous agents, and RAG pipelines powered by Anthropic Claude and OpenAI. Expert in prompt engineering and vector databases.",
+    color: "#7C3AED",
+    bg: "#f3e8ff",
   },
 ];
 
 const coreBadges = [
   "Kotlin", "Java", "Dart", "JavaScript", "TypeScript",
   "Flutter", "React Native", "React.js", "Next.js", "Angular",
+  "Anthropic Claude", "MCP", "LangChain", "LlamaIndex", "Pinecone",
+  "ChromaDB", "FAISS", "OpenAI", "Gemini", "FastAPI", "Python",
+  "HuggingFace", "RAG", "Agentic AI", "Prompt Engineering",
+  "Model Context Protocol", "AST Parsing", "Code Migration",
   "SQLite", "Room", "Firebase", "Redux", "REST", "SOAP",
   "SAP SDK", "GraphQL", "FCM/GCM", "Android Studio", "Git",
   "Gradle", "Tailwind CSS", "Vercel", "SonarQube",
@@ -90,9 +102,8 @@ export default function Skills() {
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`group p-6 rounded-2xl border border-[#e2e8f0] bg-white hover:border-[#1b63e8]/30 hover:shadow-lg transition-all duration-300 cursor-default ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
+              className={`group p-6 rounded-2xl border border-[#e2e8f0] bg-white hover:border-[#1b63e8]/30 hover:shadow-lg transition-all duration-300 cursor-default ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               {/* Icon */}
@@ -126,9 +137,8 @@ export default function Skills() {
             {coreBadges.map((tech, i) => (
               <span
                 key={tech}
-                className={`px-3 py-1.5 rounded-lg bg-[#f0f5ff] border border-[#dbe4f5] text-xs text-[#4b5563] hover:text-[#1b63e8] hover:border-[#1b63e8]/40 hover:bg-[#eef3ff] transition-all duration-200 cursor-default font-mono ${
-                  visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-                }`}
+                className={`px-3 py-1.5 rounded-lg bg-[#f0f5ff] border border-[#dbe4f5] text-xs text-[#4b5563] hover:text-[#1b63e8] hover:border-[#1b63e8]/40 hover:bg-[#eef3ff] transition-all duration-200 cursor-default font-mono ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                  }`}
                 style={{ transitionDelay: `${500 + i * 20}ms` }}
               >
                 {tech}
