@@ -1,22 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
 import puppeteer from "puppeteer-core";
 
-const CHROME_PATHS: Record<string, string> = {
+export const maxDuration = 30;
+
+const LOCAL_CHROME_PATHS: Record<string, string> = {
   darwin: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
   linux: "/usr/bin/google-chrome",
   win32: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
 };
 
-export async function GET(request: NextRequest) {
-  const executablePath = CHROME_PATHS[process.platform] ?? CHROME_PATHS.linux;
+async function getLaunchOptions() {
+  if (process.env.VERCEL) {
+    const chromium = (await import("@sparticuz/chromium")).default;
+    return {
+      executablePath: await chromium.executablePath(),
+      args: chromium.args,
+      headless: true as const,
+    };
+  }
+  return {
+    executablePath: LOCAL_CHROME_PATHS[process.platform] ?? LOCAL_CHROME_PATHS.linux,
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+    headless: true as const,
+  };
+}
 
+export async function GET(request: NextRequest) {
   let browser;
   try {
-    browser = await puppeteer.launch({
-      executablePath,
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-    });
+    const launchOptions = await getLaunchOptions();
+    browser = await puppeteer.launch(launchOptions);
 
     const page = await browser.newPage();
     // 794px = A4 width at 96dpi — matches the paper width so content lays out correctly
