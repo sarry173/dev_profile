@@ -13,26 +13,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Suresh Kumar — Full Stack Developer",
+  title: "Suresh Kumar — Senior Mobile Engineer & Full Stack Developer",
   description:
-    "Full Stack Developer with 12+ years of experience across Android (Kotlin/Java), Flutter, React Native, Angular, React.js, and Next.js. Senior Manager Software Development at Reliance Jio.",
+    "Senior Mobile Engineer (Android/Flutter) with 12+ years of experience. Full-stack capability across React Native, React.js, Next.js, and Angular. Senior Manager at Reliance Jio, open to senior engineering and tech lead roles.",
   keywords: [
-    "Full Stack Developer",
+    "Senior Mobile Engineer",
     "Android Developer",
-    "Kotlin",
-    "Flutter",
-    "React Native",
+    "Flutter Developer",
+    "Kotlin Expert",
+    "Tech Lead India",
+    "Mobile Architect",
+    "Engineering Manager",
+    "React Native Developer",
+    "Full Stack Developer",
+    "Senior Manager Software Development",
     "React.js",
     "Next.js",
     "Angular",
-    "Senior Manager Software Development",
-    "Mobile Developer",
+    "Mumbai",
+    "India",
+    "remote",
+    "Reliance Jio",
+    "Android tech lead",
+    "Flutter tech lead",
+    "mobile development India",
+    "senior engineer Mumbai",
+    "enterprise mobile apps",
   ],
   authors: [{ name: "Suresh Kumar" }],
   openGraph: {
-    title: "Suresh Kumar — Full Stack Developer",
+    title: "Suresh Kumar — Senior Mobile Engineer & Full Stack Developer",
     description:
-      "12+ years across Android, Flutter, React Native, Angular, React.js & Next.js. Currently Senior Manager at Reliance Jio.",
+      "12+ years shipping enterprise mobile & web apps. Android/Flutter expert + full-stack web. Senior Manager at Reliance Jio. Open to senior roles.",
     type: "website",
   },
 };

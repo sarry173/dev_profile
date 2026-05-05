@@ -1,163 +1,110 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Mail, Send, MapPin, Phone, CheckCircle } from "lucide-react";
-import { LinkedinIcon, StackOverflowIcon } from "@/components/SocialIcons";
+import { Mail, Send, MapPin, Phone, CheckCircle, Calendar } from "lucide-react";
+import { LinkedinIcon, StackOverflowIcon, GithubIcon } from "@/components/SocialIcons";
 
 const socials = [
-  {
-    icon: LinkedinIcon,
-    label: "LinkedIn",
-    handle: "suresh-kumar-14726a74",
-    href: "https://www.linkedin.com/in/suresh-kumar-14726a74/",
-    color: "#0077b5",
-  },
-  {
-    icon: StackOverflowIcon,
-    label: "Stack Overflow",
-    handle: "suresh-kum",
-    href: "https://stackoverflow.com/users/3367381/suresh-kum",
-    color: "#f48024",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    handle: "suresh.my1989@gmail.com",
-    href: "mailto:suresh.my1989@gmail.com",
-    color: "#00d4aa",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    handle: "+91-9867699779",
-    href: "tel:+919867699779",
-    color: "#6c63ff",
-  },
+  { icon: LinkedinIcon,      label: "LinkedIn",       handle: "suresh-kumar-14726a74",     href: "https://www.linkedin.com/in/suresh-kumar-14726a74/", color: "#0077b5" },
+  { icon: GithubIcon,        label: "GitHub",         handle: "suresh-kumar",              href: "https://github.com/suresh-kumar",                    color: "#111827" },
+  { icon: StackOverflowIcon, label: "Stack Overflow", handle: "suresh-kum",               href: "https://stackoverflow.com/users/3367381/suresh-kum", color: "#f48024" },
+  { icon: Mail,              label: "Email",          handle: "suresh.my1989@gmail.com",   href: "mailto:suresh.my1989@gmail.com",                     color: "#1b63e8" },
+  { icon: Phone,             label: "Phone",          handle: "+91-9867699779",            href: "tel:+919867699779",                                  color: "#f5b800" },
 ];
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [form, setForm]       = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
+    const ob = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
       { threshold: 0.05 }
     );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    if (ref.current) ob.observe(ref.current);
+    return () => ob.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: { preventDefault(): void }) => {
     e.preventDefault();
-    
-    // Construct the mailto URL
     const recipient = "suresh.my1989@gmail.com";
-    const mailtoSubject = encodeURIComponent(form.subject);
-    const mailtoBody = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-    );
-    
-    // Open the default email client
-    window.location.href = `mailto:${recipient}?subject=${mailtoSubject}&body=${mailtoBody}`;
-    
-    // Show success state
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
     setSubmitted(true);
     setForm({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative" ref={ref}>
-      <div className="absolute inset-0 hero-bg pointer-events-none opacity-50" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <p className="text-[#6c63ff] font-mono text-sm font-medium mb-3 tracking-widest uppercase">
+    <section id="contact" className="py-24 px-6 bg-[#f8faff]" ref={ref}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-10">
+          <p className="text-[#1b63e8] font-mono text-sm font-semibold mb-2 tracking-widest uppercase">
             05. Contact
           </p>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Let&apos;s <span className="gradient-text">Connect</span>
+          <h2 className="text-4xl md:text-5xl font-black text-[#111827] mb-4">
+            Get In <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-white/40 max-w-xl mx-auto">
-            Looking for a senior mobile engineer, tech lead, or team manager? Let&apos;s
-            talk about how I can add value to your team.
+          <p className="text-[#6b7280] max-w-xl mx-auto mb-6">
+            Looking for a senior mobile engineer, tech lead, or engineering manager?
+            Let&apos;s talk about how I can add value to your team.
           </p>
+
+          {/* Availability banner */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-white border border-[#e2e8f0] shadow-sm">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[#374151] text-sm font-semibold">
+                Available for senior roles starting <span className="text-[#f5b800] font-bold">June 2026</span>
+              </span>
+            </div>
+            <span className="text-[#d1d5db] hidden sm:block">·</span>
+            <a
+              href="mailto:suresh.my1989@gmail.com?subject=Intro%20Call%20Request&body=Hi%20Suresh%2C%20I%27d%20like%20to%20schedule%20a%2020-min%20intro%20call."
+              className="flex items-center gap-1.5 text-[#1b63e8] text-sm font-bold hover:text-[#f5b800] transition-colors"
+            >
+              <Calendar className="w-4 h-4" />
+              Book a 20-min intro call
+            </a>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left: contact info */}
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          {/* Left: info */}
           <div
-            className={`transition-all duration-700 ${
-              visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-            }`}
+            className={`transition-all duration-700 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
           >
-            <div className="glass-card rounded-2xl p-8 border border-white/5">
-              <h3 className="text-white font-bold text-xl mb-2">Get in touch</h3>
-              <p className="text-white/40 text-sm leading-relaxed mb-8">
-                I&apos;m open to senior engineering roles, technical leadership positions,
-                and consulting engagements in mobile development. Response within 24 hours.
+            <div className="bg-white rounded-2xl p-8 border border-[#e2e8f0] shadow-sm">
+              <h3 className="text-[#111827] font-bold text-xl mb-2">Let&apos;s connect</h3>
+              <p className="text-[#6b7280] text-sm leading-relaxed mb-8">
+                Open to senior engineering roles, technical leadership, and mobile consulting engagements.
+                I respond within 24 hours.
               </p>
 
+              {/* Contact details */}
               <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-[#6c63ff]/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-4 h-4 text-[#6c63ff]" />
+                {[
+                  { icon: MapPin, label: "Location", value: "Mumbai, IN 400070 · Open to Relocation", color: "#1b63e8", bg: "#eef3ff" },
+                  { icon: Mail,   label: "Email",    value: "suresh.my1989@gmail.com",                href: "mailto:suresh.my1989@gmail.com", color: "#f5b800", bg: "#fffbeb" },
+                  { icon: Phone,  label: "Phone",    value: "+91-9867699779",                         href: "tel:+919867699779", color: "#1b63e8", bg: "#eef3ff" },
+                ].map(({ icon: Icon, label, value, href, color, bg }) => (
+                  <div key={label} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: bg }}>
+                      <Icon className="w-4 h-4" style={{ color }} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-[#9ca3af] uppercase tracking-wide font-mono">{label}</p>
+                      {href
+                        ? <a href={href} className="text-[#374151] text-sm font-medium hover:text-[#1b63e8] transition-colors">{value}</a>
+                        : <p className="text-[#374151] text-sm font-medium">{value}</p>
+                      }
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs text-white/30 uppercase tracking-wide font-mono">
-                      Location
-                    </p>
-                    <p className="text-white/70 text-sm">Mumbai, IN 400070 · Open to Relocation</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-[#00d4aa]/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-4 h-4 text-[#00d4aa]" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-white/30 uppercase tracking-wide font-mono">
-                      Email
-                    </p>
-                    <a
-                      href="mailto:suresh.my1989@gmail.com"
-                      className="text-white/70 text-sm hover:text-[#00d4aa] transition-colors"
-                    >
-                      suresh.my1989@gmail.com
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-[#6c63ff]/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-4 h-4 text-[#6c63ff]" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-white/30 uppercase tracking-wide font-mono">
-                      Phone
-                    </p>
-                    <a
-                      href="tel:+919867699779"
-                      className="text-white/70 text-sm hover:text-[#6c63ff] transition-colors"
-                    >
-                      +91-9867699779
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              <div className="section-divider mb-8" />
-              <p className="text-white/30 text-xs uppercase tracking-widest font-mono mb-4">
-                Find me on
-              </p>
+              <div className="h-px bg-[#e2e8f0] mb-6" />
+              <p className="text-[#9ca3af] text-xs uppercase tracking-widest font-mono mb-4">Find me on</p>
               <div className="grid grid-cols-2 gap-3">
                 {socials.map(({ icon: Icon, label, handle, href, color }) => (
                   <a
@@ -165,14 +112,12 @@ export default function Contact() {
                     href={href}
                     target={label !== "Phone" ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-white/3 hover:bg-white/8 border border-white/5 hover:border-white/10 transition-all duration-200 group"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-[#f8faff] hover:bg-[#eef3ff] border border-[#e2e8f0] hover:border-[#1b63e8]/30 transition-all duration-200 group"
                   >
-                    <Icon className="w-4 h-4 flex-shrink-0 transition-colors" style={{ color }} />
+                    <Icon className="w-4 h-4 flex-shrink-0" style={{ color }} />
                     <div className="min-w-0">
-                      <p className="text-white/60 text-xs font-medium group-hover:text-white transition-colors">
-                        {label}
-                      </p>
-                      <p className="text-white/30 text-xs font-mono truncate">{handle}</p>
+                      <p className="text-[#374151] text-xs font-semibold group-hover:text-[#1b63e8] transition-colors">{label}</p>
+                      <p className="text-[#9ca3af] text-xs font-mono truncate">{handle}</p>
                     </div>
                   </a>
                 ))}
@@ -182,98 +127,72 @@ export default function Contact() {
 
           {/* Right: form */}
           <div
-            className={`transition-all duration-700 delay-200 ${
-              visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-            }`}
+            className={`transition-all duration-700 delay-200 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
           >
             {submitted ? (
-              <div className="glass-card rounded-2xl p-10 border border-[#00d4aa]/20 flex flex-col items-center justify-center text-center h-full min-h-80">
-                <div className="w-16 h-16 rounded-2xl bg-[#00d4aa]/10 flex items-center justify-center mb-4">
-                  <CheckCircle className="w-8 h-8 text-[#00d4aa]" />
+              <div className="bg-white rounded-2xl p-10 border border-[#e2e8f0] shadow-sm flex flex-col items-center justify-center text-center min-h-80">
+                <div className="w-16 h-16 rounded-2xl bg-[#fffbeb] flex items-center justify-center mb-4">
+                  <CheckCircle className="w-8 h-8 text-[#f5b800]" />
                 </div>
-                <h3 className="text-white font-bold text-xl mb-2">Message Sent!</h3>
-                <p className="text-white/40 text-sm">
+                <h3 className="text-[#111827] font-bold text-xl mb-2">Message Sent!</h3>
+                <p className="text-[#6b7280] text-sm">
                   Thanks for reaching out. I&apos;ll get back to you within 24 hours.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="glass-card rounded-2xl p-8 border border-white/5 space-y-5"
+                className="bg-white rounded-2xl p-8 border border-[#e2e8f0] shadow-sm space-y-5"
               >
                 <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-white/40 text-xs font-mono uppercase tracking-wide mb-2">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Your name"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/8 text-white placeholder-white/20 text-sm focus:outline-none focus:border-[#6c63ff]/50 focus:bg-[#6c63ff]/5 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-white/40 text-xs font-mono uppercase tracking-wide mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="your@company.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/8 text-white placeholder-white/20 text-sm focus:outline-none focus:border-[#6c63ff]/50 focus:bg-[#6c63ff]/5 transition-all"
-                    />
-                  </div>
+                  {[
+                    { key: "name",  label: "Name *",  type: "text",  placeholder: "Your name" },
+                    { key: "email", label: "Email *", type: "email", placeholder: "your@company.com" },
+                  ].map(({ key, label, type, placeholder }) => (
+                    <div key={key}>
+                      <label className="block text-[#374151] text-xs font-semibold uppercase tracking-wide mb-2">{label}</label>
+                      <input
+                        type={type}
+                        required
+                        value={form[key as keyof typeof form]}
+                        onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                        placeholder={placeholder}
+                        className="w-full px-4 py-3 rounded-xl bg-[#f8faff] border border-[#e2e8f0] text-[#111827] placeholder-[#9ca3af] text-sm focus:outline-none focus:border-[#1b63e8] focus:bg-white transition-all"
+                      />
+                    </div>
+                  ))}
                 </div>
 
                 <div>
-                  <label className="block text-white/40 text-xs font-mono uppercase tracking-wide mb-2">
-                    Subject *
-                  </label>
+                  <label className="block text-[#374151] text-xs font-semibold uppercase tracking-wide mb-2">Subject *</label>
                   <input
                     type="text"
                     required
                     value={form.subject}
                     onChange={(e) => setForm({ ...form, subject: e.target.value })}
                     placeholder="Job opportunity / Collaboration / Project"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/8 text-white placeholder-white/20 text-sm focus:outline-none focus:border-[#6c63ff]/50 focus:bg-[#6c63ff]/5 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#f8faff] border border-[#e2e8f0] text-[#111827] placeholder-[#9ca3af] text-sm focus:outline-none focus:border-[#1b63e8] focus:bg-white transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-white/40 text-xs font-mono uppercase tracking-wide mb-2">
-                    Message *
-                  </label>
+                  <label className="block text-[#374151] text-xs font-semibold uppercase tracking-wide mb-2">Message *</label>
                   <textarea
                     required
                     rows={5}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Tell me about the role or project..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/8 text-white placeholder-white/20 text-sm focus:outline-none focus:border-[#6c63ff]/50 focus:bg-[#6c63ff]/5 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#f8faff] border border-[#e2e8f0] text-[#111827] placeholder-[#9ca3af] text-sm focus:outline-none focus:border-[#1b63e8] focus:bg-white transition-all resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-[#6c63ff] to-[#00d4aa] text-white font-semibold text-sm hover:opacity-90 hover:scale-[1.01] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-4 rounded-xl bg-[#f5b800] text-[#111827] font-bold text-sm hover:bg-[#e5aa00] hover:scale-[1.01] transition-all duration-200 flex items-center justify-center gap-2 shadow-md"
                 >
-                  {loading ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </>
-                  )}
+                  <Send className="w-4 h-4" />
+                  Send Message
                 </button>
               </form>
             )}

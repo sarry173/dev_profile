@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d0d14;
-  --foreground: #e8e8f0;
-  --accent: #6c63ff;
-  --accent-2: #00d4aa;
+  --background: #ffffff;
+  --surface: #f0f5ff;
+  --foreground: #111827;
+  --accent: #1b63e8;
+  --accent-2: #f5b800;
+  --muted: #6b7280;
+  --border: #e2e8f0;
 }
 
 @theme inline {
@@ -30,88 +33,87 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0d14;
+  background: #f0f5ff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #6c63ff;
+  background: #1b63e8;
   border-radius: 3px;
 }
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #6c63ff 0%, #00d4aa 100%);
+  background: linear-gradient(135deg, #1b63e8 0%, #f5b800 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glassmorphism card */
+/* Card — repurposed for light theme */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(27, 99, 232, 0.06);
+}
+
+/* Tinted surface card */
+.surface-card {
+  background: #f0f5ff;
+  border: 1px solid #dbe4f5;
 }
 
 /* Glow effects */
-.glow-purple {
-  box-shadow: 0 0 30px rgba(108, 99, 255, 0.3);
+.glow-blue {
+  box-shadow: 0 4px 24px rgba(27, 99, 232, 0.25);
 }
-.glow-teal {
-  box-shadow: 0 0 30px rgba(0, 212, 170, 0.3);
+.glow-amber {
+  box-shadow: 0 4px 24px rgba(245, 184, 0, 0.25);
 }
 
-/* Animated gradient background */
+/* Hero background */
 .hero-bg {
-  background: radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.15) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(0, 212, 170, 0.1) 0%, transparent 60%),
-              radial-gradient(ellipse at 50% 100%, rgba(108, 99, 255, 0.08) 0%, transparent 60%),
-              #0d0d14;
+  background: linear-gradient(135deg, #eef3ff 0%, #ffffff 55%, #fffbeb 100%);
 }
 
 /* Grid pattern overlay */
 .grid-pattern {
-  background-image: linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image:
+    linear-gradient(rgba(27, 99, 232, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 99, 232, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 /* Section divider */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(108, 99, 255, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(27, 99, 232, 0.25), transparent);
 }
 
 /* Skill bar */
 .skill-bar {
-  height: 4px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #6c63ff, #00d4aa);
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #1b63e8, #f5b800);
 }
 
 /* Timeline connector */
 .timeline-line {
   width: 2px;
-  background: linear-gradient(180deg, #6c63ff, #00d4aa);
+  background: linear-gradient(180deg, #1b63e8, #f5b800);
 }
 
-/* Noise texture overlay */
-.noise::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
+/* Organic blob shape for photo backgrounds */
+.blob-bg {
+  border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-14px); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.04); opacity: 1; }
 }
 
 @keyframes spin-slow {
@@ -119,12 +121,17 @@ body {
   to { transform: rotate(360deg); }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
 }
 
 .animate-spin-slow {
@@ -135,9 +142,4 @@ body {
 .typing-cursor::after {
   content: '|';
   animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
 }
