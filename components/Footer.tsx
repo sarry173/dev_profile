@@ -16,7 +16,7 @@ export default function Footer() {
           <span className="font-extrabold text-base text-[#111827]">
             Suresh<span className="text-[#1b63e8]">Kumar.</span>
           </span>
-          <span className="text-[#9ca3af] text-sm">· Senior Mobile Engineer</span>
+          <span className="text-[#9ca3af] text-sm">· Senior Manager · Software Development</span>
         </div>
 
         {/* <p className="text-[#9ca3af] text-xs">

@@ -2,20 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { X, Download, ExternalLink } from "lucide-react";
-
-async function downloadResume() {
-  const res = await fetch("/api/download-resume");
-  if (!res.ok) return;
-  const blob = await res.blob();
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "Suresh_Kumar_Senior_Full_Stack_Developer_2026.pdf";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
+import { downloadResumePdf } from "@/lib/downloadResume";
 
 interface ResumeModalProps {
   open: boolean;
@@ -73,7 +60,7 @@ export default function ResumeModal({ open, onClose }: ResumeModalProps) {
               <ExternalLink className="w-4 h-4" />
             </a>
             <button
-              onClick={downloadResume}
+              onClick={downloadResumePdf}
               className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#f5b800] text-[#111827] text-sm font-bold hover:bg-[#e5aa00] transition-colors shadow-sm"
             >
               <Download className="w-3.5 h-3.5" />
@@ -102,7 +89,7 @@ export default function ResumeModal({ open, onClose }: ResumeModalProps) {
         <div className="flex items-center justify-between px-5 py-3 border-t border-[#e2e8f0] bg-[#f8faff] flex-shrink-0">
           <p className="text-[#9ca3af] text-xs font-mono">Senior Mobile Engineer · Reliance Jio</p>
           <button
-            onClick={downloadResume}
+            onClick={downloadResumePdf}
             className="text-xs text-[#1b63e8] hover:text-[#f5b800] transition-colors font-mono flex items-center gap-1"
           >
             <Download className="w-3 h-3" />
