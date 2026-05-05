@@ -397,16 +397,30 @@ export default async function ResumePage({
               <h2 className="section-h2 text-[10px] font-black uppercase tracking-[0.15em] text-[#1b63e8] border-b border-[#dbe4f5] pb-1.5 mb-3">
                 Certifications
               </h2>
-              <div className="keep-together flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-[15px] font-black text-[#111827]">
-                    Certified AWS Developer – Associate
-                  </h3>
-                  <p className="edu-org text-[#1b63e8] font-semibold text-[13px]">Amazon Web Services (AWS)</p>
-                </div>
-                <div className="text-right flex-shrink-0">
-                  <p className="text-[13px] font-semibold text-[#374151]">2023</p>
-                </div>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+                {[
+                  { title: "Introduction to Generative AI", issuer: "Google Cloud · Coursera", date: "Mar 2024", url: "https://coursera.org/verify/VQQEU4V5SKZH" },
+                  { title: "Agile Project Management", issuer: "Google · Coursera", date: "Mar 2024", url: "https://coursera.org/verify/L6H9W54ZNDPM" },
+                  { title: "Design Thinking for Innovation", issuer: "University of Virginia · Coursera", date: "Mar 2024", url: "https://coursera.org/verify/HJXJA8V95F5Y" },
+                  { title: "Become a Blockchain Developer", issuer: "LinkedIn Learning", date: "Mar 2025", url: null },
+                  { title: "Blockchain: Learning Solidity", issuer: "LinkedIn Learning", date: "Mar 2025", url: null },
+                  { title: "Flutter: Building UIs (Part 07)", issuer: "LinkedIn Learning", date: "Jun 2020", url: null },
+                  { title: "Learning Kotlin for Android", issuer: "LinkedIn Learning", date: "Jul 2017", url: null },
+                  { title: "Learning Data Analytics", issuer: "LinkedIn Learning", date: "Jul 2017", url: null },
+                ].map((c) => (
+                  <div key={c.title} className="keep-together">
+                    <p className="text-[12.5px] font-bold text-[#111827] leading-snug">{c.title}</p>
+                    <p className="text-[11px] text-[#1b63e8] font-semibold">{c.issuer}</p>
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <span className="text-[10px] text-[#9ca3af] font-mono">{c.date}</span>
+                      {c.url && (
+                        <a href={c.url} className="text-[10px] text-[#1b63e8] underline underline-offset-2 font-mono" target="_blank" rel="noopener noreferrer">
+                          Verify ↗
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </section>
 

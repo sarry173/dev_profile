@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --version)"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --version)",
+      "Read(//Users/sureshkumar/**)",
+      "Bash(cp \"/Users/sureshkumar/Desktop/Coursera VQQEU4V5SKZH.pdf\" \"/Users/sureshkumar/workspace/next_js/dev_profile/public/cert-coursera-generative-ai.pdf\")",
+      "Bash(cp \"/Users/sureshkumar/Desktop/Coursera HJXJA8V95F5Y.pdf\" \"/Users/sureshkumar/workspace/next_js/dev_profile/public/cert-coursera-design-thinking.pdf\")",
+      "Bash(cp \"/Users/sureshkumar/Desktop/Coursera L6H9W54ZNDPM.pdf\" \"/Users/sureshkumar/workspace/next_js/dev_profile/public/cert-coursera-agile-pm.pdf\")",
+      "Bash(cp \"/Users/sureshkumar/Desktop/CertificateOfCompletion_Flutter Part 07 Building the UI or Flutter Part 07 Building UIs.pdf\" \"/Users/sureshkumar/workspace/next_js/dev_profile/public/cert-linkedin-flutter-ui.pdf\")",
+      "Bash(cp \"/Users/sureshkumar/Desktop/CertificateOfCompletion_Learning Data Analytics 2015.pdf\" \"/Users/sureshkumar/workspace/next_js/dev_profile/public/cert-linkedin-data-analytics.pdf\")",
+      "Bash(node scripts/gen-cert-thumbs.mjs)",
+      "Bash(python3 -c \"import fitz; print\\('pymupdf ok'\\)\")",
+      "Bash(node -e \"require\\('pdf-to-img'\\)\")",
+      "Bash(sips -s format jpeg /Users/sureshkumar/workspace/next_js/dev_profile/public/cert-coursera-agile-pm.pdf --out /tmp/test-agile.jpg)",
+      "Read(//tmp/**)",
+      "Read(//private/tmp/**)"
     ],
     "additionalDirectories": [
       "/Users/sureshkumar/workspace/next_js/dev_profile/app/api"
