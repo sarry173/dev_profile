@@ -1,5 +1,7 @@
 "use client";
 
+import { Code2 } from "lucide-react";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -7,11 +9,10 @@ export default function Footer() {
     <footer className="py-8 px-6 border-t border-[#e2e8f0] bg-white">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <span className="relative flex items-center w-9 h-6">
-            <span className="absolute left-0 w-5 h-5 rounded-full bg-[#1b63e8]" />
-            <span className="absolute left-3 w-5 h-5 rounded-full bg-[#f5b800]" />
-          </span>
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-[#1b63e8]/10 flex items-center justify-center text-[#1b63e8]">
+            <Code2 className="w-5 h-5" />
+          </div>
           <span className="font-extrabold text-base text-[#111827]">
             Suresh<span className="text-[#1b63e8]">Kumar.</span>
           </span>

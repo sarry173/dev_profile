@@ -6,6 +6,13 @@ import { SiFlutter, SiNextdotjs } from "react-icons/si";
 
 const services = [
   {
+    icon: FaRobot,
+    title: "AI / GenAI",
+    desc: "Building MCP servers, autonomous agents, and RAG pipelines powered by Anthropic Claude and OpenAI. Expert in prompt engineering and vector databases.",
+    color: "#7C3AED",
+    bg: "#f3e8ff",
+  },
+  {
     icon: FaAndroid,
     title: "Android Development",
     desc: "Native Android apps in Kotlin/Java using MVVM, Jetpack, Room, and SAP SDK — from SDK 2.1 through modern architectures.",
@@ -47,13 +54,7 @@ const services = [
     color: "#f5b800",
     bg: "#fffbeb",
   },
-  {
-    icon: FaRobot,
-    title: "AI / GenAI",
-    desc: "Building MCP servers, autonomous agents, and RAG pipelines powered by Anthropic Claude and OpenAI. Expert in prompt engineering and vector databases.",
-    color: "#7C3AED",
-    bg: "#f3e8ff",
-  },
+
 ];
 
 const coreBadges = [

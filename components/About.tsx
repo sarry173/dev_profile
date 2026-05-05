@@ -59,7 +59,7 @@ export default function About() {
               Mobile-first. Web-fluent. 12 years of shipping.
             </h3>
             <p className="text-[#4b5563] leading-relaxed mb-4">
-              I&apos;m a Senior Mobile Engineer and Senior Manager with 12+ years spanning the full
+              I&apos;m a Senior Mobile Engineer and Senior Manager with 12+ years of experience spanning the full
               spectrum of modern development — from{" "}
               <span className="text-[#1b63e8] font-semibold">Android (Kotlin/Java)</span>,{" "}
               <span className="text-[#1b63e8] font-semibold">Flutter</span>, and{" "}

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --version)"
+    ],
+    "additionalDirectories": [
+      "/Users/sureshkumar/workspace/next_js/dev_profile/app/api"
+    ]
+  }
+}

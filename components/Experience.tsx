@@ -21,7 +21,7 @@ const experiences = [
     period: "Jul 2013 – Dec 2023",
     location: "Chandigarh, India",
     description:
-      "Delivered 15+ enterprise mobile applications across a decade of evolving Android ecosystem — from SDK 2.1 through modern Kotlin and Flutter. Designed and architected mobile platforms for Fortune 500 clients including Reliance Industries. Collaborated with cross-functional Agile teams and systematically optimised performance through code reviews and refactoring.",
+      "Delivered 15+ enterprise mobile applications across a decade of evolving Android ecosystem — from SDK 2.1 through modern Kotlin and Flutter. Designed and architected mobile platforms for Fortune 500 clients including Reliance Industries. Collaborated with cross-functional Agile teams and systematically optimized performance through code reviews and refactoring.",
     techs: ["Android", "Kotlin", "Java", "Flutter", "SAP SDK", "SOAP", "REST", "Firebase"],
   },
   {

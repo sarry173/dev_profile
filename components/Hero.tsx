@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Download, Mail, Phone } from "lucide-react";
 import { LinkedinIcon, StackOverflowIcon, GithubIcon } from "@/components/SocialIcons";
-import ResumeModal from "@/components/ResumeModal";
 import Image from "next/image";
 
 const roles = [
@@ -20,7 +19,6 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [resumeOpen, setResumeOpen] = useState(false);
   const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
@@ -91,13 +89,13 @@ export default function Hero() {
             >
               Hire Me
             </button>
-            <button
-              onClick={() => setResumeOpen(true)}
+            <a
+              href="/resume"
               className="px-8 py-4 rounded-xl border-2 border-[#1b63e8] text-[#1b63e8] font-bold text-base hover:bg-[#1b63e8] hover:text-white hover:scale-105 transition-all duration-200 flex items-center gap-2"
             >
               <Download className="w-4 h-4" />
               Download CV
-            </button>
+            </a>
           </div>
 
           {/* Social icons */}
@@ -175,7 +173,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </section>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Code2 } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#" },
@@ -41,12 +41,11 @@ export default function Navbar() {
         }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo — two overlapping circles */}
-        <button onClick={() => go("#")} className="flex items-center gap-2 group">
-          <span className="relative flex items-center w-9 h-6">
-            <span className="absolute left-0 w-5 h-5 rounded-full bg-[#1b63e8]" />
-            <span className="absolute left-3 w-5 h-5 rounded-full bg-[#f5b800]" />
-          </span>
+        {/* Logo — Dev Icon */}
+        <button onClick={() => go("#")} className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 rounded-lg bg-[#1b63e8]/10 flex items-center justify-center text-[#1b63e8] group-hover:bg-[#1b63e8] group-hover:text-white transition-colors duration-300">
+            <Code2 className="w-5 h-5" />
+          </div>
           <span className="font-extrabold text-lg text-[#111827]">
             Suresh<span className="text-[#1b63e8]">Kumar.</span>
           </span>
@@ -70,6 +69,12 @@ export default function Navbar() {
               </button>
             );
           })}
+          <a
+            href="/resume"
+            className="px-4 py-2 rounded-lg text-sm font-medium text-[#4b5563] hover:text-[#1b63e8] hover:bg-[#1b63e8]/5 transition-all duration-200"
+          >
+            Resume
+          </a>
           <button
             onClick={() => go("#contact")}
             className="ml-3 px-5 py-2.5 rounded-xl bg-[#f5b800] text-[#111827] text-sm font-bold hover:bg-[#e5aa00] hover:scale-105 transition-all duration-200 shadow-sm"
@@ -99,6 +104,12 @@ export default function Navbar() {
               {l.label}
             </button>
           ))}
+          <a
+            href="/resume"
+            className="text-left px-4 py-3 rounded-xl text-[#374151] hover:text-[#1b63e8] hover:bg-[#f0f5ff] transition-all font-medium"
+          >
+            Resume
+          </a>
           <button
             onClick={() => go("#contact")}
             className="mt-2 px-5 py-3 rounded-xl bg-[#f5b800] text-[#111827] font-bold text-center"
