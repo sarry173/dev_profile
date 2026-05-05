@@ -3,34 +3,43 @@
 import { Code2 } from "lucide-react";
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="py-8 px-6 border-t border-[#e2e8f0] bg-white">
+    <footer
+      className="py-8 px-6 border-t"
+      style={{ background: "var(--bg)", borderColor: "var(--border)" }}
+    >
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Logo */}
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#1b63e8]/10 flex items-center justify-center text-[#1b63e8]">
+          <div
+            className="w-8 h-8 rounded-lg flex items-center justify-center"
+            style={{ background: "var(--accent-o10)", color: "var(--accent)" }}
+          >
             <Code2 className="w-5 h-5" />
           </div>
-          <span className="font-extrabold text-base text-[#111827]">
-            Suresh<span className="text-[#1b63e8]">Kumar.</span>
+          <span className="font-extrabold text-base" style={{ color: "var(--fg)" }}>
+            Suresh<span style={{ color: "var(--accent)" }}>Kumar.</span>
           </span>
-          <span className="text-[#9ca3af] text-sm">· Senior Manager · Software Development</span>
+          <span className="text-sm" style={{ color: "var(--subtle)" }}>
+            · Senior Manager · Software Development
+          </span>
         </div>
 
-        {/* <p className="text-[#9ca3af] text-xs">
-          Built with Next.js &amp; Tailwind CSS · {year}
-        </p> */}
-
-        <nav className="flex gap-5 text-xs text-[#6b7280]">
+        <nav className="flex gap-5 text-xs" style={{ color: "var(--muted)" }}>
           {["About", "Skills", "Projects", "Contact"].map((item) => (
             <button
               key={item}
               onClick={() =>
                 document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: "smooth" })
               }
-              className="hover:text-[#1b63e8] transition-colors font-medium"
+              className="font-medium transition-colors"
+              style={{ color: "var(--muted)" }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLElement).style.color = "var(--accent)")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLElement).style.color = "var(--muted)")
+              }
             >
               {item}
             </button>

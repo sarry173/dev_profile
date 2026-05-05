@@ -1,18 +1,100 @@
 @import "tailwindcss";
 
+/* ── Theme tokens ──────────────────────────────────────────────── */
+
+:root,
+[data-theme="ocean"] {
+  --accent:          #1b63e8;
+  --accent-2:        #f5b800;
+  --bg:              #ffffff;
+  --surface:         #f0f5ff;
+  --surface-alt:     #f8faff;
+  --card-bg:         #ffffff;
+  --fg:              #111827;
+  --fg-2:            #374151;
+  --fg-3:            #4b5563;
+  --muted:           #6b7280;
+  --subtle:          #9ca3af;
+  --border:          #e2e8f0;
+  --border-light:    #dbe4f5;
+  --surface-accent:  #eef3ff;
+  --surface-accent-2:#fffbeb;
+}
+
+[data-theme="midnight"] {
+  --accent:          #7c3aed;
+  --accent-2:        #06b6d4;
+  --bg:              #0f172a;
+  --surface:         #1a2540;
+  --surface-alt:     #162032;
+  --card-bg:         #1e293b;
+  --fg:              #f1f5f9;
+  --fg-2:            #e2e8f0;
+  --fg-3:            #cbd5e1;
+  --muted:           #94a3b8;
+  --subtle:          #64748b;
+  --border:          #2d3f5e;
+  --border-light:    #253352;
+  --surface-accent:  #2d1b5e;
+  --surface-accent-2:#0c2233;
+}
+
+[data-theme="forest"] {
+  --accent:          #059669;
+  --accent-2:        #f97316;
+  --bg:              #ffffff;
+  --surface:         #f0fdf4;
+  --surface-alt:     #f0fdf9;
+  --card-bg:         #ffffff;
+  --fg:              #111827;
+  --fg-2:            #374151;
+  --fg-3:            #4b5563;
+  --muted:           #6b7280;
+  --subtle:          #9ca3af;
+  --border:          #d1fae5;
+  --border-light:    #a7f3d0;
+  --surface-accent:  #dcfce7;
+  --surface-accent-2:#fff7ed;
+}
+
+[data-theme="sunset"] {
+  --accent:          #e11d48;
+  --accent-2:        #f59e0b;
+  --bg:              #ffffff;
+  --surface:         #fff1f2;
+  --surface-alt:     #fff8f9;
+  --card-bg:         #ffffff;
+  --fg:              #111827;
+  --fg-2:            #374151;
+  --fg-3:            #4b5563;
+  --muted:           #6b7280;
+  --subtle:          #9ca3af;
+  --border:          #fce7f3;
+  --border-light:    #fbcfe8;
+  --surface-accent:  #ffe4e6;
+  --surface-accent-2:#fffbeb;
+}
+
+/* Computed transparent variants (update automatically with theme) */
 :root {
-  --background: #ffffff;
-  --surface: #f0f5ff;
-  --foreground: #111827;
-  --accent: #1b63e8;
-  --accent-2: #f5b800;
-  --muted: #6b7280;
-  --border: #e2e8f0;
+  --accent-o5:    color-mix(in srgb, var(--accent)   5%, transparent);
+  --accent-o6:    color-mix(in srgb, var(--accent)   6%, transparent);
+  --accent-o8:    color-mix(in srgb, var(--accent)   8%, transparent);
+  --accent-o10:   color-mix(in srgb, var(--accent)  10%, transparent);
+  --accent-o15:   color-mix(in srgb, var(--accent)  15%, transparent);
+  --accent-o20:   color-mix(in srgb, var(--accent)  20%, transparent);
+  --accent-o25:   color-mix(in srgb, var(--accent)  25%, transparent);
+  --accent-o30:   color-mix(in srgb, var(--accent)  30%, transparent);
+  --accent-o40:   color-mix(in srgb, var(--accent)  40%, transparent);
+  --accent-2-o8:  color-mix(in srgb, var(--accent-2)  8%, transparent);
+  --accent-2-o10: color-mix(in srgb, var(--accent-2) 10%, transparent);
+  --accent-2-o25: color-mix(in srgb, var(--accent-2) 25%, transparent);
+  --accent-2-o50: color-mix(in srgb, var(--accent-2) 50%, transparent);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -22,10 +104,11 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Custom scrollbar */
@@ -33,77 +116,89 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f0f5ff;
+  background: var(--surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1b63e8;
+  background: var(--accent);
   border-radius: 3px;
 }
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #1b63e8 0%, #f5b800 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Card — repurposed for light theme */
+/* Card */
 .glass-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 12px rgba(27, 99, 232, 0.06);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px var(--accent-o6);
 }
 
 /* Tinted surface card */
 .surface-card {
-  background: #f0f5ff;
-  border: 1px solid #dbe4f5;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
 }
 
 /* Glow effects */
 .glow-blue {
-  box-shadow: 0 4px 24px rgba(27, 99, 232, 0.25);
+  box-shadow: 0 4px 24px var(--accent-o25);
 }
 .glow-amber {
-  box-shadow: 0 4px 24px rgba(245, 184, 0, 0.25);
+  box-shadow: 0 4px 24px var(--accent-2-o25);
 }
 
 /* Hero background */
 .hero-bg {
-  background: linear-gradient(135deg, #eef3ff 0%, #ffffff 55%, #fffbeb 100%);
+  background: linear-gradient(
+    135deg,
+    var(--surface-accent)   0%,
+    var(--bg)              55%,
+    var(--surface-accent-2) 100%
+  );
 }
 
 /* Grid pattern overlay */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(27, 99, 232, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(27, 99, 232, 0.05) 1px, transparent 1px);
+    linear-gradient(var(--accent-o5) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent-o5) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 /* Section divider */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(27, 99, 232, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-o25), transparent);
 }
 
 /* Skill bar */
 .skill-bar {
   height: 6px;
   border-radius: 3px;
-  background: linear-gradient(90deg, #1b63e8, #f5b800);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
 }
 
 /* Timeline connector */
 .timeline-line {
   width: 2px;
-  background: linear-gradient(180deg, #1b63e8, #f5b800);
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
 }
 
 /* Organic blob shape for photo backgrounds */
 .blob-bg {
   border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+}
+
+/* Navbar scrolled state */
+.navbar-scrolled {
+  background: color-mix(in srgb, var(--card-bg) 95%, transparent);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 8px color-mix(in srgb, var(--fg) 8%, transparent);
 }
 
 @keyframes float {

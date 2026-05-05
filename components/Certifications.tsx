@@ -32,7 +32,6 @@ function CertModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
           style={{ background: `linear-gradient(145deg, ${cert.color}ee, ${cert.color}88)` }}
         >
           <div>
-            {/* Close on mobile */}
             <button
               onClick={onClose}
               className="md:hidden mb-4 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-all"
@@ -40,17 +39,14 @@ function CertModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
               <X className="w-4 h-4" />
             </button>
 
-            {/* Icon */}
             <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-4xl mb-5 shadow-lg">
               {cert.icon}
             </div>
 
-            {/* Cert title */}
             <h3 className="text-white font-black text-lg leading-snug mb-2">{cert.title}</h3>
             <p className="text-white/80 text-sm font-semibold mb-1">{cert.issuer}</p>
             <p className="text-white/60 text-xs font-mono mb-5">{cert.date}</p>
 
-            {/* Platform badge */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/20 backdrop-blur-sm mb-5">
               {cert.platform === "Coursera" ? (
                 <ShieldCheck className="w-3.5 h-3.5 text-white" />
@@ -60,7 +56,6 @@ function CertModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
               <span className="text-white text-xs font-bold">{cert.platform}</span>
             </div>
 
-            {/* Skills */}
             <div className="flex flex-wrap gap-1.5">
               {cert.skills.map((s) => (
                 <span key={s} className="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-sm text-white text-[11px] font-semibold">
@@ -70,7 +65,6 @@ function CertModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
             </div>
           </div>
 
-          {/* Actions */}
           <div className="flex flex-col gap-2 mt-6">
             {cert.verifyUrl && (
               <a
@@ -95,19 +89,34 @@ function CertModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
         </div>
 
         {/* ── Right panel: PDF viewer ── */}
-        <div className="flex-1 flex flex-col bg-white/85 backdrop-blur-2xl min-h-0">
-          {/* Header */}
-          <div className="flex items-center justify-between px-5 py-3 border-b border-[#e2e8f0]/60 flex-shrink-0">
-            <p className="text-[#6b7280] text-xs font-mono truncate">{cert.title}</p>
+        <div
+          className="flex-1 flex flex-col min-h-0"
+          style={{ background: "color-mix(in srgb, var(--card-bg) 85%, transparent)", backdropFilter: "blur(24px)" }}
+        >
+          <div
+            className="flex items-center justify-between px-5 py-3 border-b flex-shrink-0"
+            style={{ borderColor: "var(--border)" }}
+          >
+            <p className="text-xs font-mono truncate" style={{ color: "var(--muted)" }}>
+              {cert.title}
+            </p>
             <button
               onClick={onClose}
-              className="hidden md:flex w-8 h-8 rounded-xl border border-[#e2e8f0]/60 items-center justify-center text-[#6b7280] hover:text-[#111827] hover:border-[#9ca3af] hover:bg-white/50 transition-all"
+              className="hidden md:flex w-8 h-8 rounded-xl border items-center justify-center transition-all"
+              style={{ borderColor: "var(--border)", color: "var(--muted)" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "var(--fg)";
+                (e.currentTarget as HTMLElement).style.background = "var(--surface)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "var(--muted)";
+                (e.currentTarget as HTMLElement).style.background = "transparent";
+              }}
             >
               <X className="w-4 h-4" />
             </button>
           </div>
-          {/* PDF iframe */}
-          <div className="flex-1 bg-[#f0f5ff]/40 overflow-hidden">
+          <div className="flex-1 overflow-hidden" style={{ background: "var(--surface-accent)" }}>
             <iframe
               src={`${cert.pdfFile}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
               title={cert.title}
@@ -150,24 +159,35 @@ export default function Certifications() {
   };
 
   const tabs: { key: Filter; label: string }[] = [
-    { key: "all", label: `All  (${counts.all})` },
+    { key: "all",      label: `All  (${counts.all})` },
     { key: "coursera", label: `Coursera  (${counts.coursera})` },
     { key: "linkedin", label: `LinkedIn  (${counts.linkedin})` },
   ];
 
   return (
-    <section id="certifications" className="py-24 px-6 bg-white" ref={ref}>
+    <section
+      id="certifications"
+      className="py-24 px-6"
+      style={{ background: "var(--bg)" }}
+      ref={ref}
+    >
       <div className="max-w-6xl mx-auto">
 
         {/* Heading */}
         <div className="text-center mb-12">
-          <p className="text-[#1b63e8] font-mono text-sm font-semibold mb-2 tracking-widest uppercase">
+          <p
+            className="font-mono text-sm font-semibold mb-2 tracking-widest uppercase"
+            style={{ color: "var(--accent)" }}
+          >
             05. Certifications
           </p>
-          <h2 className="text-4xl md:text-5xl font-black text-[#111827] mb-4">
+          <h2
+            className="text-4xl md:text-5xl font-black mb-4"
+            style={{ color: "var(--fg)" }}
+          >
             My <span className="gradient-text">Credentials</span>
           </h2>
-          <p className="text-[#6b7280] max-w-lg mx-auto text-sm">
+          <p className="max-w-lg mx-auto text-sm" style={{ color: "var(--muted)" }}>
             {counts.all} verified certificates from Google, University of Virginia &amp; LinkedIn Learning.
             Click any card to preview.
           </p>
@@ -175,15 +195,28 @@ export default function Certifications() {
 
         {/* Filter tabs */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex items-center gap-1 p-1 rounded-2xl bg-[#f0f5ff] border border-[#dbe4f5]">
+          <div
+            className="inline-flex items-center gap-1 p-1 rounded-2xl border"
+            style={{ background: "var(--surface)", borderColor: "var(--border-light)" }}
+          >
             {tabs.map(({ key, label }) => (
               <button
                 key={key}
                 onClick={() => setFilter(key)}
-                className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${filter === key
-                  ? "bg-[#1b63e8] text-white shadow-md"
-                  : "text-[#6b7280] hover:text-[#1b63e8]"
-                  }`}
+                className="px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200"
+                style={
+                  filter === key
+                    ? { background: "var(--accent)", color: "#fff" }
+                    : { color: "var(--muted)" }
+                }
+                onMouseEnter={(e) => {
+                  if (filter !== key)
+                    (e.currentTarget as HTMLElement).style.color = "var(--accent)";
+                }}
+                onMouseLeave={(e) => {
+                  if (filter !== key)
+                    (e.currentTarget as HTMLElement).style.color = "var(--muted)";
+                }}
               >
                 {label}
               </button>
@@ -201,14 +234,16 @@ export default function Certifications() {
                 onClick={() => setSelected(cert)}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className={`group relative text-left rounded-2xl border bg-white transition-all duration-300 overflow-hidden ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                className={`group relative text-left rounded-2xl border transition-all duration-300 overflow-hidden ${
+                  visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
                 style={{
+                  background: "var(--card-bg)",
                   transitionDelay: `${i * 60}ms`,
-                  borderColor: isHovered ? `${cert.color}55` : "#e2e8f0",
+                  borderColor: isHovered ? `${cert.color}55` : "var(--border)",
                   boxShadow: isHovered
                     ? `0 8px 30px ${cert.color}25, 0 0 0 1px ${cert.color}30`
-                    : "0 1px 3px rgba(0,0,0,0.06)",
+                    : `0 1px 3px color-mix(in srgb, var(--fg) 6%, transparent)`,
                   transform: isHovered
                     ? "translateY(-6px) scale(1.01)"
                     : visible ? "translateY(0)" : "translateY(32px)",
@@ -223,8 +258,10 @@ export default function Certifications() {
                     className="w-full h-full object-cover object-top transition-transform duration-500"
                     style={{ transform: isHovered ? "scale(1.06)" : "scale(1)" }}
                   />
-                  {/* Subtle gradient overlay at bottom so body blends in */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent" />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent"
+                    style={{ "--tw-gradient-from": "var(--card-bg)" } as React.CSSProperties}
+                  />
 
                   {/* Badges */}
                   <div className="absolute top-2 right-2 flex flex-col items-end gap-1">
@@ -246,7 +283,6 @@ export default function Certifications() {
 
                 {/* Card body */}
                 <div className="p-4">
-                  {/* Platform badge */}
                   <span
                     className="inline-block px-2 py-0.5 rounded-md text-[10px] font-bold mb-2"
                     style={{ background: `${cert.color}15`, color: cert.color }}
@@ -254,29 +290,36 @@ export default function Certifications() {
                     {cert.platform === "Coursera" ? "Coursera" : "LinkedIn Learning"}
                   </span>
 
-                  {/* Title */}
                   <h3
-                    className="text-[#111827] font-bold text-[13px] leading-snug mb-1 transition-colors duration-200"
-                    style={{ color: isHovered ? cert.color : "#111827" }}
+                    className="font-bold text-[13px] leading-snug mb-1 transition-colors duration-200"
+                    style={{ color: isHovered ? cert.color : "var(--fg)" }}
                   >
                     {cert.title}
                   </h3>
 
-                  {/* Issuer */}
-                  <p className="text-[11px] text-[#6b7280] font-semibold mb-2">By: {cert.issuer}</p>
+                  <p
+                    className="text-[11px] font-semibold mb-2"
+                    style={{ color: "var(--muted)" }}
+                  >
+                    By: {cert.issuer}
+                  </p>
 
-                  {/* Date */}
-                  <p className="text-[10px] text-[#9ca3af] font-mono mb-3">{cert.date}</p>
+                  <p
+                    className="text-[10px] font-mono mb-3"
+                    style={{ color: "var(--subtle)" }}
+                  >
+                    {cert.date}
+                  </p>
 
-                  {/* Skills */}
                   <div className="flex flex-wrap gap-1 mb-3">
                     {cert.skills.slice(0, 2).map((s) => (
                       <span
                         key={s}
-                        className="px-1.5 py-0.5 rounded-md text-[10px] font-mono text-[#4b5563] border transition-colors duration-200"
+                        className="px-1.5 py-0.5 rounded-md text-[10px] font-mono border transition-colors duration-200"
                         style={{
-                          background: isHovered ? `${cert.color}10` : "#f0f5ff",
-                          borderColor: isHovered ? `${cert.color}30` : "#dbe4f5",
+                          color: "var(--fg-3)",
+                          background: isHovered ? `${cert.color}10` : "var(--surface)",
+                          borderColor: isHovered ? `${cert.color}30` : "var(--border-light)",
                         }}
                       >
                         {s}
@@ -284,16 +327,15 @@ export default function Certifications() {
                     ))}
                   </div>
 
-                  {/* Preview CTA */}
                   <div
                     className="flex items-center gap-1.5 text-[11px] font-semibold transition-all duration-200"
-                    style={{ color: isHovered ? cert.color : "#9ca3af" }}
+                    style={{ color: isHovered ? cert.color : "var(--subtle)" }}
                   >
                     <div
                       className="w-5 h-5 rounded-full flex items-center justify-center transition-all duration-200"
                       style={{
                         background: isHovered ? `${cert.color}15` : "transparent",
-                        border: `1px solid ${isHovered ? cert.color : "#d1d5db"}`,
+                        border: `1px solid ${isHovered ? cert.color : "var(--border)"}`,
                       }}
                     >
                       <span className="text-[8px]">▶</span>
@@ -302,12 +344,12 @@ export default function Certifications() {
                   </div>
                 </div>
 
-                {/* Bottom color bar — expands on hover */}
+                {/* Bottom color bar */}
                 <div
                   className="absolute bottom-0 left-0 h-0.5 transition-all duration-300"
                   style={{
                     width: isHovered ? "100%" : "0%",
-                    background: `linear-gradient(90deg, ${cert.color}, #f5b800)`,
+                    background: `linear-gradient(90deg, ${cert.color}, var(--accent-2))`,
                   }}
                 />
               </button>
@@ -315,9 +357,13 @@ export default function Certifications() {
           })}
         </div>
 
-        {/* Empty state (shouldn't happen but defensive) */}
         {filtered.length === 0 && (
-          <p className="text-center text-[#9ca3af] text-sm py-12">No certificates in this category.</p>
+          <p
+            className="text-center text-sm py-12"
+            style={{ color: "var(--subtle)" }}
+          >
+            No certificates in this category.
+          </p>
         )}
 
       </div>

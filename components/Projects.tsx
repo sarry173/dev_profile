@@ -37,16 +37,27 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 bg-white" ref={ref}>
+    <section
+      id="projects"
+      className="py-24 px-6"
+      style={{ background: "var(--bg)" }}
+      ref={ref}
+    >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-[#1b63e8] font-mono text-sm font-semibold mb-2 tracking-widest uppercase">
+          <p
+            className="font-mono text-sm font-semibold mb-2 tracking-widest uppercase"
+            style={{ color: "var(--accent)" }}
+          >
             04. Projects
           </p>
-          <h2 className="text-4xl md:text-5xl font-black text-[#111827] mb-4">
+          <h2
+            className="text-4xl md:text-5xl font-black mb-4"
+            style={{ color: "var(--fg)" }}
+          >
             My <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-[#6b7280] max-w-xl mx-auto">
+          <p className="max-w-xl mx-auto" style={{ color: "var(--muted)" }}>
             Play Store apps + enterprise web platforms — across Android, Flutter, React, Angular, and Next.js.
           </p>
         </div>
@@ -57,11 +68,28 @@ export default function Projects() {
             <button
               key={key}
               onClick={() => setFilter(key)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+              className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200"
+              style={
                 filter === key
-                  ? "bg-[#1b63e8] text-white shadow-md"
-                  : "bg-[#f0f5ff] text-[#4b5563] hover:text-[#1b63e8] border border-[#dbe4f5] hover:border-[#1b63e8]/40"
-              }`}
+                  ? { background: "var(--accent)", color: "#fff" }
+                  : {
+                      background: "var(--surface)",
+                      color: "var(--fg-3)",
+                      border: "1px solid var(--border-light)",
+                    }
+              }
+              onMouseEnter={(e) => {
+                if (filter !== key) {
+                  (e.currentTarget as HTMLElement).style.color = "var(--accent)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-o40)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (filter !== key) {
+                  (e.currentTarget as HTMLElement).style.color = "var(--fg-3)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--border-light)";
+                }
+              }}
             >
               {label}
             </button>
@@ -73,13 +101,33 @@ export default function Projects() {
           {filtered.map((p, i) => (
             <div
               key={p.title}
-              className={`group rounded-2xl border ${p.highlight ? 'border-[#7c3aed] ring-1 ring-[#7c3aed]/30 shadow-[#7c3aed]/10 shadow-lg' : 'border-[#e2e8f0] bg-white hover:border-[#1b63e8]/25 hover:shadow-lg'} transition-all duration-300 overflow-hidden hover:-translate-y-1 ${
+              className={`group rounded-2xl border transition-all duration-300 overflow-hidden hover:-translate-y-1 ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
-              style={{ transitionDelay: `${i * 55}ms` }}
+              style={{
+                background: "var(--card-bg)",
+                borderColor: p.highlight ? "#7c3aed" : "var(--border)",
+                boxShadow: p.highlight ? "0 4px 20px rgba(124,58,237,0.1)" : "none",
+                transitionDelay: `${i * 55}ms`,
+              }}
+              onMouseEnter={(e) => {
+                if (!p.highlight) {
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-o25)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px var(--accent-o10)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!p.highlight) {
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                }
+              }}
             >
               {/* Color bar */}
-              <div className="h-1.5 w-full" style={{ background: `linear-gradient(90deg, ${p.color}, #f5b800)` }} />
+              <div
+                className="h-1.5 w-full"
+                style={{ background: `linear-gradient(90deg, ${p.color}, var(--accent-2))` }}
+              />
 
               <div className="p-6">
                 {/* Header */}
@@ -93,7 +141,14 @@ export default function Projects() {
                   <div className="flex flex-col items-end gap-1">
                     <div className="flex gap-2">
                       {p.highlight && (
-                        <span className="text-xs px-2 py-0.5 rounded-md font-mono font-bold bg-[#f5b800]/10 text-[#f5b800] border border-[#f5b800]/20">
+                        <span
+                          className="text-xs px-2 py-0.5 rounded-md font-mono font-bold border"
+                          style={{
+                            background: "var(--accent-2-o10)",
+                            color: "var(--accent-2)",
+                            borderColor: "var(--accent-2-o25)",
+                          }}
+                        >
                           ⭐ Featured
                         </span>
                       )}
@@ -104,40 +159,77 @@ export default function Projects() {
                         {p.type === "mobile" ? "📱 Mobile" : p.type === "web" ? "🌐 Web" : "🤖 AI"}
                       </span>
                     </div>
-                    <span className="text-xs text-[#9ca3af] font-mono truncate max-w-[110px] text-right">
+                    <span
+                      className="text-xs font-mono truncate max-w-[110px] text-right"
+                      style={{ color: "var(--subtle)" }}
+                    >
                       {p.client}
                     </span>
                   </div>
                 </div>
 
-                <h3 className="text-[#111827] font-bold text-base mb-2 group-hover:text-[#1b63e8] transition-colors">
+                <h3
+                  className="font-bold text-base mb-2 group-hover:transition-colors"
+                  style={{ color: "var(--fg)" }}
+                  onMouseEnter={(e) =>
+                    ((e.currentTarget as HTMLElement).style.color = "var(--accent)")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.currentTarget as HTMLElement).style.color = "var(--fg)")
+                  }
+                >
                   {p.title}
                 </h3>
-                <p className="text-[#6b7280] text-sm leading-relaxed mb-4">{p.description}</p>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
+                  {p.description}
+                </p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {p.tags.slice(0, 4).map((t) => (
-                    <span key={t} className="px-2 py-1 rounded-md bg-[#f0f5ff] text-[#4b5563] text-xs font-mono border border-[#dbe4f5]">
+                    <span
+                      key={t}
+                      className="px-2 py-1 rounded-md text-xs font-mono border"
+                      style={{
+                        background: "var(--surface)",
+                        color: "var(--fg-3)",
+                        borderColor: "var(--border-light)",
+                      }}
+                    >
                       {t}
                     </span>
                   ))}
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-end border-t border-[#f0f5ff] pt-3">
+                <div
+                  className="flex items-center justify-end border-t pt-3"
+                  style={{ borderColor: "var(--surface)" }}
+                >
                   {p.live ? (
                     <a
                       href={p.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-[#1b63e8] hover:text-[#f5b800] transition-colors font-semibold"
+                      className="flex items-center gap-1.5 text-xs font-semibold transition-colors"
+                      style={{ color: "var(--accent)" }}
+                      onMouseEnter={(e) =>
+                        ((e.currentTarget as HTMLElement).style.color = "var(--accent-2)")
+                      }
+                      onMouseLeave={(e) =>
+                        ((e.currentTarget as HTMLElement).style.color = "var(--accent)")
+                      }
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       View on Play Store
                     </a>
                   ) : (
-                    <span className="text-xs text-[#9ca3af] font-mono">Enterprise / Internal</span>
+                    <span
+                      className="text-xs font-mono"
+                      style={{ color: "var(--subtle)" }}
+                    >
+                      Enterprise / Internal
+                    </span>
                   )}
                 </div>
               </div>
@@ -147,7 +239,10 @@ export default function Projects() {
 
         {/* Note */}
         <div className="text-center mt-10">
-          <p className="text-[#9ca3af] text-sm flex items-center justify-center gap-2">
+          <p
+            className="text-sm flex items-center justify-center gap-2"
+            style={{ color: "var(--subtle)" }}
+          >
             <GithubIcon className="w-4 h-4" />
             Enterprise apps are internal — live demos available on request.
           </p>
