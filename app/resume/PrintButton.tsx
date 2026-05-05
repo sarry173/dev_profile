@@ -15,7 +15,7 @@ export default function PrintButton() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "Suresh_Kumar_Resume.pdf";
+      a.download = "Suresh_Kumar_Senior_Full_Stack_Developer_2026.pdf";
       a.click();
       URL.revokeObjectURL(url);
     } catch (e) {

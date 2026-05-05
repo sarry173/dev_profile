@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": 'attachment; filename="Suresh_Kumar_Resume.pdf"',
+        "Content-Disposition": 'attachment; filename="Suresh_Kumar_Senior_Full_Stack_Developer_2026.pdf"',
         "Cache-Control": "no-store",
       },
     });

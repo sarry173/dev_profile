@@ -59,7 +59,7 @@ export default function ResumeModal({ open, onClose }: ResumeModalProps) {
               <ExternalLink className="w-4 h-4" />
             </a>
             <a
-              href="/Suresh_Kumar_Resume.pdf"
+              href="/api/download-resume"
               download="Suresh_Kumar_Senior_Mobile_Developer_2026.pdf"
               className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#f5b800] text-[#111827] text-sm font-bold hover:bg-[#e5aa00] transition-colors shadow-sm"
             >
@@ -89,7 +89,7 @@ export default function ResumeModal({ open, onClose }: ResumeModalProps) {
         <div className="flex items-center justify-between px-5 py-3 border-t border-[#e2e8f0] bg-[#f8faff] flex-shrink-0">
           <p className="text-[#9ca3af] text-xs font-mono">Senior Mobile Engineer · Reliance Jio</p>
           <a
-            href="/Suresh_Kumar_Resume.pdf"
+            href="/api/download-resume"
             download="Suresh_Kumar_Senior_Mobile_Developer_2026.pdf"
             className="text-xs text-[#1b63e8] hover:text-[#f5b800] transition-colors font-mono flex items-center gap-1"
           >
