@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { seoMetadata, personalInfo } from "@/data/config";
@@ -13,11 +13,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#1b63e8",
+};
+
 export const metadata: Metadata = {
   title: seoMetadata.title,
   description: seoMetadata.description,
   keywords: seoMetadata.keywords,
   authors: [{ name: personalInfo.name }],
+  manifest: "/manifest.json",
   openGraph: {
     title: seoMetadata.title,
     description: seoMetadata.description,

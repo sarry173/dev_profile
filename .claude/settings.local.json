@@ -9,7 +9,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001)",
       "Bash(curl -s http://localhost:3000/resume)",
       "Bash(npx tsc *)",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "Bash(node -e \"require\\('sharp'\\)\")"
     ]
   }
 }
