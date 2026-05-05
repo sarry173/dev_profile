@@ -38,17 +38,17 @@ export default function ResumeModal({ open, onClose }: ResumeModalProps) {
       <div className="relative z-10 w-full max-w-4xl h-[90vh] flex flex-col rounded-2xl overflow-hidden border border-[#e2e8f0] shadow-2xl bg-white">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[#e2e8f0] flex-shrink-0 bg-[#f8faff]">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#eef3ff] border border-[#dbe4f5] flex items-center justify-center">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-[#eef3ff] border border-[#dbe4f5] flex-shrink-0 flex items-center justify-center">
               <span className="text-[#1b63e8] text-xs font-extrabold font-mono">PDF</span>
             </div>
-            <div>
-              <p className="text-[#111827] text-sm font-bold">Suresh Kumar — Resume</p>
-              <p className="text-[#9ca3af] text-xs font-mono">Suresh_Kumar_Senior_Mobile_Developer_2026.pdf</p>
+            <div className="min-w-0 pr-2">
+              <p className="text-[#111827] text-sm font-bold truncate">Suresh Kumar — Resume</p>
+              <p className="text-[#9ca3af] text-xs font-mono truncate">Suresh_Kumar_Senior_Mobile_Developer_2026.pdf</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
             <a
               href="/Suresh_Kumar_Resume.pdf"
               target="_blank"

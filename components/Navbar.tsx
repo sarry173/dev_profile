@@ -4,17 +4,17 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Home",       href: "#" },
-  { label: "About",      href: "#about" },
-  { label: "Skills",     href: "#skills" },
-  { label: "Projects",   href: "#projects" },
+  { label: "Home", href: "#" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
   { label: "Testimonials", href: "#contact" },
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen]     = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive]     = useState("");
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,9 +37,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
+        }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo — two overlapping circles */}
@@ -49,7 +48,7 @@ export default function Navbar() {
             <span className="absolute left-3 w-5 h-5 rounded-full bg-[#f5b800]" />
           </span>
           <span className="font-extrabold text-lg text-[#111827]">
-            Suresh<span className="text-[#1b63e8]">.</span>
+            Suresh<span className="text-[#1b63e8]">Kumar.</span>
           </span>
         </button>
 
@@ -62,11 +61,10 @@ export default function Navbar() {
               <button
                 key={l.href}
                 onClick={() => go(l.href)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  isActive
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
                     ? "text-[#1b63e8] bg-[#1b63e8]/8"
                     : "text-[#4b5563] hover:text-[#1b63e8] hover:bg-[#1b63e8]/5"
-                }`}
+                  }`}
               >
                 {l.label}
               </button>

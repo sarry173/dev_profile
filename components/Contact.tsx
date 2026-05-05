@@ -5,17 +5,17 @@ import { Mail, Send, MapPin, Phone, CheckCircle, Calendar } from "lucide-react";
 import { LinkedinIcon, StackOverflowIcon, GithubIcon } from "@/components/SocialIcons";
 
 const socials = [
-  { icon: LinkedinIcon,      label: "LinkedIn",       handle: "suresh-kumar-14726a74",     href: "https://www.linkedin.com/in/suresh-kumar-14726a74/", color: "#0077b5" },
-  { icon: GithubIcon,        label: "GitHub",         handle: "suresh-kumar",              href: "https://github.com/suresh-kumar",                    color: "#111827" },
-  { icon: StackOverflowIcon, label: "Stack Overflow", handle: "suresh-kum",               href: "https://stackoverflow.com/users/3367381/suresh-kum", color: "#f48024" },
-  { icon: Mail,              label: "Email",          handle: "suresh.my1989@gmail.com",   href: "mailto:suresh.my1989@gmail.com",                     color: "#1b63e8" },
-  { icon: Phone,             label: "Phone",          handle: "+91-9867699779",            href: "tel:+919867699779",                                  color: "#f5b800" },
+  { icon: LinkedinIcon, label: "LinkedIn", handle: "suresh-kumar-14726a74", href: "https://www.linkedin.com/in/suresh-kumar-14726a74/", color: "#0077b5" },
+  { icon: GithubIcon, label: "GitHub", handle: "suresh-kumar", href: "https://github.com/sarry173", color: "#111827" },
+  { icon: StackOverflowIcon, label: "Stack Overflow", handle: "suresh-kum", href: "https://stackoverflow.com/users/3367381/suresh-kum", color: "#f48024" },
+  { icon: Mail, label: "Email", handle: "suresh.my1989@gmail.com", href: "mailto:suresh.my1989@gmail.com", color: "#1b63e8" },
+  { icon: Phone, label: "Phone", handle: "+91-9867699779", href: "tel:+919867699779", color: "#f5b800" },
 ];
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [form, setForm]       = useState({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -85,8 +85,8 @@ export default function Contact() {
               <div className="space-y-4 mb-8">
                 {[
                   { icon: MapPin, label: "Location", value: "Mumbai, IN 400070 · Open to Relocation", color: "#1b63e8", bg: "#eef3ff" },
-                  { icon: Mail,   label: "Email",    value: "suresh.my1989@gmail.com",                href: "mailto:suresh.my1989@gmail.com", color: "#f5b800", bg: "#fffbeb" },
-                  { icon: Phone,  label: "Phone",    value: "+91-9867699779",                         href: "tel:+919867699779", color: "#1b63e8", bg: "#eef3ff" },
+                  { icon: Mail, label: "Email", value: "suresh.my1989@gmail.com", href: "mailto:suresh.my1989@gmail.com", color: "#f5b800", bg: "#fffbeb" },
+                  { icon: Phone, label: "Phone", value: "+91-9867699779", href: "tel:+919867699779", color: "#1b63e8", bg: "#eef3ff" },
                 ].map(({ icon: Icon, label, value, href, color, bg }) => (
                   <div key={label} className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: bg }}>
@@ -146,7 +146,7 @@ export default function Contact() {
               >
                 <div className="grid sm:grid-cols-2 gap-5">
                   {[
-                    { key: "name",  label: "Name *",  type: "text",  placeholder: "Your name" },
+                    { key: "name", label: "Name *", type: "text", placeholder: "Your name" },
                     { key: "email", label: "Email *", type: "email", placeholder: "your@company.com" },
                   ].map(({ key, label, type, placeholder }) => (
                     <div key={key}>
