@@ -25,7 +25,7 @@ const experience = [
     techs: "Kotlin · Android · Flutter · MVVM · Firebase · SonarQube · PMD · Agile",
   },
   {
-    role: "Software Developer",
+    role: "Sr. Software Developer",
     company: "Mobile Programming India Pvt. Ltd.",
     period: "Jul 2013 – Dec 2023",
     location: "Chandigarh, India",

@@ -16,7 +16,7 @@ const experiences = [
   },
   {
     type: "work",
-    role: "Software Developer",
+    role: "Sr. Software Developer",
     company: "Mobile Programming India Pvt. Ltd.",
     period: "Jul 2013 – Dec 2023",
     location: "Chandigarh, India",
@@ -84,9 +84,8 @@ export default function Experience() {
               return (
                 <div
                   key={idx}
-                  className={`relative flex gap-6 md:gap-0 transition-all duration-700 ${
-                    visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  } ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
+                  className={`relative flex gap-6 md:gap-0 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    } ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
                   style={{ transitionDelay: `${idx * 150}ms` }}
                 >
                   {/* Card */}
@@ -98,11 +97,10 @@ export default function Experience() {
                           <p className="text-[#1b63e8] text-sm font-semibold">{exp.company}</p>
                         </div>
                         <span
-                          className={`text-xs px-2 py-1 rounded-lg font-mono flex-shrink-0 font-semibold ${
-                            isWork
+                          className={`text-xs px-2 py-1 rounded-lg font-mono flex-shrink-0 font-semibold ${isWork
                               ? "bg-[#eef3ff] text-[#1b63e8]"
                               : "bg-[#fffbeb] text-[#d97706]"
-                          }`}
+                            }`}
                         >
                           {isWork ? "Work" : "Edu"}
                         </span>
