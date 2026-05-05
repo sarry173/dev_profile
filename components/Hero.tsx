@@ -81,7 +81,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-4 mb-10">
             <button
               onClick={() =>
-                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
               }
               className="px-8 py-4 rounded-xl bg-[#f5b800] text-[#111827] font-bold text-base hover:bg-[#e5aa00] hover:scale-105 transition-all duration-200 shadow-md glow-amber"
             >
