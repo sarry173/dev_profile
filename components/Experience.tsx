@@ -2,49 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Briefcase, GraduationCap } from "lucide-react";
-
-const experiences = [
-  {
-    type: "work",
-    role: "Senior Manager Software Development",
-    company: "Reliance Jio",
-    period: "Feb 2024 – Present",
-    location: "Mumbai, India",
-    description:
-      "Leading end-to-end development of Android and Flutter applications serving 100K+ Jio employees. Own the complete SDLC — technical design, effort estimation, coding, peer reviews (PMD, SonarQube), QA/UAT, production deployment, and post-launch support. Established SonarQube and PMD quality gates that reduced code defect density by 30% across the team. Primary technical point of contact for business stakeholders.",
-    techs: ["Kotlin", "Android", "Flutter", "MVVM", "Firebase", "SonarQube"],
-  },
-  {
-    type: "work",
-    role: "Sr. Software Developer",
-    company: "Mobile Programming India Pvt. Ltd.",
-    period: "Jul 2013 – Dec 2023",
-    location: "Chandigarh, India",
-    description:
-      "Delivered 15+ enterprise mobile applications across a decade of evolving Android ecosystem — from SDK 2.1 through modern Kotlin and Flutter. Designed and architected mobile platforms for Fortune 500 clients including Reliance Industries. Collaborated with cross-functional Agile teams and systematically optimized performance through code reviews and refactoring. Implemented unit testing with JUnit and integrated Docker containers for CI/CD pipelines.",
-    techs: ["Android", "Kotlin", "Java", "Flutter", "SAP SDK", "SOAP", "REST", "Firebase", "JUnit", "Docker"],
-  },
-  {
-    type: "work",
-    role: "Software Developer Intern",
-    company: "A-One Technology Pvt. Ltd.",
-    period: "Nov 2012 – Jun 2013",
-    location: "Punjab, India",
-    description:
-      "Gained hands-on experience in mobile application development, working on Android projects and learning core development workflows and best practices.",
-    techs: ["Android", "Java", "Eclipse", "SQLite"],
-  },
-  {
-    type: "education",
-    role: "B.Tech — Computer Science",
-    company: "Himachal Pradesh University",
-    period: "Graduated Jun 2012",
-    location: "Himachal Pradesh, India",
-    description:
-      "Bachelor of Technology in Computer Science. Strong foundation in data structures, algorithms, operating systems, and software engineering — the bedrock of 12+ years of growth.",
-    techs: ["Data Structures", "Algorithms", "OS", "DBMS", "Software Engineering"],
-  },
-];
+import { timeline } from "@/data/config";
 
 export default function Experience() {
   const ref = useRef<HTMLDivElement>(null);
@@ -77,7 +35,7 @@ export default function Experience() {
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 timeline-line opacity-40 -translate-x-px" />
 
           <div className="space-y-8">
-            {experiences.map((exp, idx) => {
+            {timeline.map((exp, idx) => {
               const isEven = idx % 2 === 0;
               const isWork = exp.type === "work";
 

@@ -62,8 +62,8 @@ export default function Navbar() {
                 key={l.href}
                 onClick={() => go(l.href)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
-                    ? "text-[#1b63e8] bg-[#1b63e8]/8"
-                    : "text-[#4b5563] hover:text-[#1b63e8] hover:bg-[#1b63e8]/5"
+                  ? "text-[#1b63e8] bg-[#1b63e8]/8"
+                  : "text-[#4b5563] hover:text-[#1b63e8] hover:bg-[#1b63e8]/5"
                   }`}
               >
                 {l.label}
@@ -80,7 +80,7 @@ export default function Navbar() {
             onClick={() => go("#contact")}
             className="ml-3 px-5 py-2.5 rounded-xl bg-[#f5b800] text-[#111827] text-sm font-bold hover:bg-[#e5aa00] hover:scale-105 transition-all duration-200 shadow-sm"
           >
-            Contact Us
+            Contact Me
           </button>
         </div>
 

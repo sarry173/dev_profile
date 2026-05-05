@@ -3,71 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import { FaAndroid, FaReact, FaAngular, FaUsersCog, FaRobot } from "react-icons/fa";
 import { SiFlutter, SiNextdotjs } from "react-icons/si";
+import { services, coreBadges, type ServiceIconName } from "@/data/config";
 
-const services = [
-  {
-    icon: FaRobot,
-    title: "AI / GenAI",
-    desc: "Building MCP servers, autonomous agents, and RAG pipelines powered by Anthropic Claude and OpenAI. Expert in prompt engineering and vector databases.",
-    color: "#7C3AED",
-    bg: "#f3e8ff",
-  },
-  {
-    icon: FaAndroid,
-    title: "Android Development",
-    desc: "Native Android apps in Kotlin/Java using MVVM, Jetpack, Room, and SAP SDK — from SDK 2.1 through modern architectures.",
-    color: "#3DDC84",
-    bg: "#eafaf1",
-  },
-  {
-    icon: SiFlutter,
-    title: "Flutter / Cross-Platform",
-    desc: "High-fidelity Flutter apps with BLoC/GetX state management, Firebase, platform channels, and Play Store deployments.",
-    color: "#02569B",
-    bg: "#e1f0fa",
-  },
-  {
-    icon: FaReact,
-    title: "React Native",
-    desc: "Cross-platform mobile apps with React Native, Expo, Redux, and deep integration with native device APIs.",
-    color: "#61dafb",
-    bg: "#ecfeff",
-  },
-  {
-    icon: SiNextdotjs,
-    title: "React.js / Next.js",
-    desc: "Modern web frontends with React.js hooks, Next.js App Router, SSR/SSG, and Tailwind CSS — deployed on Vercel.",
-    color: "#111827",
-    bg: "#f3f4f6",
-  },
-  {
-    icon: FaAngular,
-    title: "Angular",
-    desc: "Enterprise Angular dashboards with TypeScript, RxJS, Angular Material, NgRx state, and REST/GraphQL APIs.",
-    color: "#dd0031",
-    bg: "#fef2f2",
-  },
-  {
-    icon: FaUsersCog,
-    title: "Tech Leadership",
-    desc: "End-to-end SDLC ownership — architecture design, SonarQube/PMD code quality, team mentoring, and stakeholder communication.",
-    color: "#f5b800",
-    bg: "#fffbeb",
-  },
-
-];
-
-const coreBadges = [
-  "Kotlin", "Java", "Dart", "JavaScript", "TypeScript",
-  "Flutter", "React Native", "React.js", "Next.js", "Angular",
-  "Anthropic Claude", "MCP", "LangChain", "LlamaIndex", "Pinecone",
-  "ChromaDB", "FAISS", "OpenAI", "Gemini", "FastAPI", "Python",
-  "HuggingFace", "RAG", "Agentic AI", "Prompt Engineering",
-  "Model Context Protocol", "AST Parsing", "Code Migration",
-  "SQLite", "Room", "Firebase", "Redux", "REST", "SOAP",
-  "SAP SDK", "GraphQL", "FCM/GCM", "Android Studio", "Git",
-  "Gradle", "Tailwind CSS", "Vercel", "SonarQube",
-];
+const iconMap: Record<ServiceIconName, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+  FaRobot,
+  FaAndroid,
+  SiFlutter,
+  FaReact,
+  SiNextdotjs,
+  FaAngular,
+  FaUsersCog,
+};
 
 export default function Skills() {
   const ref = useRef<HTMLDivElement>(null);
@@ -100,33 +46,36 @@ export default function Skills() {
 
         {/* Services grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
-          {services.map((s, i) => (
-            <div
-              key={s.title}
-              className={`group p-6 rounded-2xl border border-[#e2e8f0] bg-white hover:border-[#1b63e8]/30 hover:shadow-lg transition-all duration-300 cursor-default ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              {/* Icon */}
+          {services.map((s, i) => {
+            const Icon = iconMap[s.iconName];
+            return (
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
-                style={{ background: s.bg }}
+                key={s.title}
+                className={`group p-6 rounded-2xl border border-[#e2e8f0] bg-white hover:border-[#1b63e8]/30 hover:shadow-lg transition-all duration-300 cursor-default ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                  }`}
+                style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <s.icon className="w-7 h-7" style={{ color: s.color }} />
+                {/* Icon */}
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: s.bg }}
+                >
+                  <Icon className="w-7 h-7" style={{ color: s.color }} />
+                </div>
+
+                <h3 className="text-[#111827] font-bold text-base mb-2 group-hover:text-[#1b63e8] transition-colors">
+                  {s.title}
+                </h3>
+                <p className="text-[#6b7280] text-sm leading-relaxed">{s.desc}</p>
+
+                {/* Bottom accent */}
+                <div
+                  className="mt-4 h-0.5 w-0 group-hover:w-full rounded-full transition-all duration-500"
+                  style={{ background: `linear-gradient(90deg, ${s.color}, #f5b800)` }}
+                />
               </div>
-
-              <h3 className="text-[#111827] font-bold text-base mb-2 group-hover:text-[#1b63e8] transition-colors">
-                {s.title}
-              </h3>
-              <p className="text-[#6b7280] text-sm leading-relaxed">{s.desc}</p>
-
-              {/* Bottom accent */}
-              <div
-                className="mt-4 h-0.5 w-0 group-hover:w-full rounded-full transition-all duration-500"
-                style={{ background: `linear-gradient(90deg, ${s.color}, #f5b800)` }}
-              />
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Supporting tech badges */}

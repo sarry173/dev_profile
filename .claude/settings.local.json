@@ -7,7 +7,8 @@
       "Bash(node -e \"const l = require\\('lucide-react'\\); const keys = Object.keys\\(l\\).filter\\(k => /git|linked|twitter|x$/i.test\\(k\\)\\); console.log\\(keys\\)\")",
       "Bash(node -e \"const l = require\\('lucide-react'\\); const keys = Object.keys\\(l\\).filter\\(k => /^\\(Linked|Linked2|Github|GithubIcon|Twitter|X$|XIcon|Linkedin\\)/i.test\\(k\\) && !k.startsWith\\('Lucide'\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001)",
-      "Bash(curl -s http://localhost:3000/resume)"
+      "Bash(curl -s http://localhost:3000/resume)",
+      "Bash(npx tsc *)"
     ]
   }
 }

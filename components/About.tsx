@@ -2,25 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MapPin, Calendar } from "lucide-react";
-
-const skills = [
-  { label: "Android (Kotlin / Java)", level: 95 },
-  { label: "Flutter (Dart)",          level: 88 },
-  { label: "React Native",            level: 78 },
-  { label: "React.js / Next.js",      level: 84 },
-  { label: "Angular",                 level: 75 },
-  { label: "LLM Integration (Claude/OpenAI)", level: 88 },
-  { label: "RAG Pipelines (LangChain)", level: 85 },
-  { label: "MCP Server Development", level: 83 },
-  { label: "Agentic AI", level: 82 },
-];
-
-const stats = [
-  { value: "12+",  label: "Years Experience" },
-  { value: "20+",  label: "Apps Shipped" },
-  { value: "6",    label: "Tech Stacks" },
-  { value: "F500", label: "Clients" },
-];
+import { personalInfo, aboutBio, skillBars, stats } from "@/data/config";
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,39 +38,23 @@ export default function About() {
             }`}
           >
             <h3 className="text-2xl md:text-3xl font-black text-[#111827] mb-4">
-              Mobile-first. Web-fluent. 12 years of shipping.
+              {aboutBio.tagline}
             </h3>
-            <p className="text-[#4b5563] leading-relaxed mb-4">
-              I&apos;m a Senior Mobile Engineer and Senior Manager with 12+ years of experience spanning the full
-              spectrum of modern development — from{" "}
-              <span className="text-[#1b63e8] font-semibold">Android (Kotlin/Java)</span>,{" "}
-              <span className="text-[#1b63e8] font-semibold">Flutter</span>, and{" "}
-              <span className="text-[#1b63e8] font-semibold">React Native</span> on mobile, to{" "}
-              <span className="text-[#1b63e8] font-semibold">React.js, Next.js</span>, and{" "}
-              <span className="text-[#1b63e8] font-semibold">Angular</span> on the web.
-            </p>
-            <p className="text-[#4b5563] leading-relaxed mb-4">
-              Led SDLC for 20+ enterprise apps for Fortune 500 clients including Reliance Industries.
-              I champion clean architecture, performance-first thinking, and team mentorship.
-            </p>
-            <p className="text-[#4b5563] leading-relaxed mb-8">
-              Beyond mobile and web, I&apos;m deeply invested in AI engineering — building RAG pipelines 
-              that ground LLMs in enterprise knowledge, designing agentic systems that reason and act 
-              autonomously, building MCP (Model Context Protocol) servers, and integrating generative 
-              AI into production mobile and web applications. I work across the full AI stack: from 
-              prompt engineering and vector databases to multi-agent orchestration, all the way to 
-              agentic developer tooling powered by Anthropic Claude.
-            </p>
+            {aboutBio.paragraphs.map((para, i) => (
+              <p key={i} className="text-[#4b5563] leading-relaxed mb-4">
+                {para}
+              </p>
+            ))}
 
             {/* Quick info chips */}
             <div className="flex flex-wrap gap-3 mb-10">
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#e2e8f0] text-[#4b5563] text-sm shadow-sm">
                 <MapPin className="w-4 h-4 text-[#1b63e8]" />
-                Mumbai, India · Open to Relocation
+                {personalInfo.location} · Open to Relocation
               </div>
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#e2e8f0] text-[#4b5563] text-sm shadow-sm">
                 <Calendar className="w-4 h-4 text-[#1b63e8]" />
-                12+ Years in Software Development
+                {personalInfo.yearsExperience} Years in Software Development
               </div>
             </div>
 
@@ -111,7 +77,7 @@ export default function About() {
           >
             <h4 className="text-lg font-bold text-[#111827] mb-6">Core Technical Proficiency</h4>
             <div className="space-y-5">
-              {skills.map((s, i) => (
+              {skillBars.map((s, i) => (
                 <div key={s.label}>
                   <div className="flex justify-between mb-2">
                     <span className="text-[#111827] text-sm font-semibold">{s.label}</span>
@@ -133,11 +99,15 @@ export default function About() {
             {/* Highlights card */}
             <div className="mt-8 p-5 bg-white rounded-2xl border border-[#e2e8f0] shadow-sm">
               <p className="text-xs font-mono text-[#9ca3af] uppercase tracking-widest mb-3">Currently at</p>
-              <p className="text-[#111827] font-bold text-lg mb-1">Reliance Jio</p>
-              <p className="text-[#6b7280] text-sm">Senior Manager Software Development — leading Android &amp; Flutter teams serving 100K+ enterprise employees.</p>
+              <p className="text-[#111827] font-bold text-lg mb-1">{personalInfo.currentCompany}</p>
+              <p className="text-[#6b7280] text-sm">
+                {personalInfo.currentRole} — {personalInfo.currentScope}.
+              </p>
               <div className="mt-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-green-600 text-xs font-semibold">Open to opportunities · Available June 2026</span>
+                <span className="text-green-600 text-xs font-semibold">
+                  Open to opportunities · Available {personalInfo.availability}
+                </span>
               </div>
             </div>
           </div>

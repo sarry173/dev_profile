@@ -3,133 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { X, ExternalLink, Download, ShieldCheck, BadgeCheck } from "lucide-react";
 
-type Platform = "Coursera" | "LinkedIn Learning";
+import { certifications, type Certification } from "@/data/config";
+
 type Filter = "all" | "coursera" | "linkedin";
-
-type Cert = {
-  title: string;
-  issuer: string;
-  platform: Platform;
-  date: string;
-  year: number;
-  skills: string[];
-  pdfFile: string;
-  thumb: string;
-  verifyUrl?: string;
-  color: string;
-  bg: string;
-  icon: string;
-};
-
-const certs: Cert[] = [
-  {
-    title: "Introduction to Generative AI",
-    issuer: "Google Cloud",
-    platform: "Coursera",
-    date: "Mar 2024",
-    year: 2024,
-    skills: ["Generative AI", "LLMs", "Google Cloud"],
-    pdfFile: "/cert-coursera-generative-ai.pdf",
-    thumb: "/cert-thumbnails/cert-coursera-generative-ai.jpg",
-    verifyUrl: "https://coursera.org/verify/VQQEU4V5SKZH",
-    color: "#34a853",
-    bg: "#e6f4ea",
-    icon: "🤖",
-  },
-  {
-    title: "Agile Project Management",
-    issuer: "Google",
-    platform: "Coursera",
-    date: "Mar 2024",
-    year: 2024,
-    skills: ["Agile", "Scrum", "Project Management"],
-    pdfFile: "/cert-coursera-agile-pm.pdf",
-    thumb: "/cert-thumbnails/cert-coursera-agile-pm.jpg",
-    verifyUrl: "https://coursera.org/verify/L6H9W54ZNDPM",
-    color: "#4285f4",
-    bg: "#e8f0fe",
-    icon: "📋",
-  },
-  {
-    title: "Design Thinking for Innovation",
-    issuer: "University of Virginia",
-    platform: "Coursera",
-    date: "Mar 2024",
-    year: 2024,
-    skills: ["Design Thinking", "Innovation", "Problem Solving"],
-    pdfFile: "/cert-coursera-design-thinking.pdf",
-    thumb: "/cert-thumbnails/cert-coursera-design-thinking.jpg",
-    verifyUrl: "https://coursera.org/verify/HJXJA8V95F5Y",
-    color: "#e87722",
-    bg: "#fff4ed",
-    icon: "💡",
-  },
-  {
-    title: "Become a Blockchain Developer",
-    issuer: "LinkedIn Learning",
-    platform: "LinkedIn Learning",
-    date: "Mar 2025",
-    year: 2025,
-    skills: ["Blockchain", "Ethereum", "Cryptography"],
-    pdfFile: "/cert-linkedin-blockchain-developer.pdf",
-    thumb: "/cert-thumbnails/cert-linkedin-blockchain-developer.jpg",
-    color: "#0a66c2",
-    bg: "#e8f1fb",
-    icon: "⛓️",
-  },
-  {
-    title: "Blockchain: Learning Solidity",
-    issuer: "LinkedIn Learning",
-    platform: "LinkedIn Learning",
-    date: "Mar 2025",
-    year: 2025,
-    skills: ["Solidity", "Blockchain", "Smart Contracts"],
-    pdfFile: "/cert-linkedin-solidity.pdf",
-    thumb: "/cert-thumbnails/cert-linkedin-solidity.jpg",
-    color: "#7c3aed",
-    bg: "#f5f3ff",
-    icon: "📜",
-  },
-  {
-    title: "Flutter: Building UIs (Part 07)",
-    issuer: "LinkedIn Learning",
-    platform: "LinkedIn Learning",
-    date: "Jun 2020",
-    year: 2020,
-    skills: ["Flutter", "UI Design", "Dart"],
-    pdfFile: "/cert-linkedin-flutter-ui.pdf",
-    thumb: "/cert-thumbnails/cert-linkedin-flutter-ui.jpg",
-    color: "#02569B",
-    bg: "#e1f0fa",
-    icon: "📱",
-  },
-  {
-    title: "Learning Kotlin for Android",
-    issuer: "LinkedIn Learning",
-    platform: "LinkedIn Learning",
-    date: "Jul 2017",
-    year: 2017,
-    skills: ["Kotlin", "Android Development"],
-    pdfFile: "/cert-linkedin-kotlin-android.pdf",
-    thumb: "/cert-thumbnails/cert-linkedin-kotlin-android.jpg",
-    color: "#7F52FF",
-    bg: "#f0edff",
-    icon: "⚡",
-  },
-  {
-    title: "Learning Data Analytics",
-    issuer: "LinkedIn Learning",
-    platform: "LinkedIn Learning",
-    date: "Jul 2017",
-    year: 2017,
-    skills: ["Data Analysis", "Business Intelligence", "Excel"],
-    pdfFile: "/cert-linkedin-data-analytics.pdf",
-    thumb: "/cert-thumbnails/cert-linkedin-data-analytics.jpg",
-    color: "#059669",
-    bg: "#ecfdf5",
-    icon: "📊",
-  },
-];
+type Cert = Certification;
 
 /* ── Modal ─────────────────────────────────────────────────────── */
 function CertModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
@@ -262,14 +139,14 @@ export default function Certifications() {
   }, []);
 
   const filtered =
-    filter === "coursera" ? certs.filter((c) => c.platform === "Coursera") :
-      filter === "linkedin" ? certs.filter((c) => c.platform === "LinkedIn Learning") :
-        certs;
+    filter === "coursera" ? certifications.filter((c) => c.platform === "Coursera") :
+      filter === "linkedin" ? certifications.filter((c) => c.platform === "LinkedIn Learning") :
+        certifications;
 
   const counts = {
-    all: certs.length,
-    coursera: certs.filter((c) => c.platform === "Coursera").length,
-    linkedin: certs.filter((c) => c.platform === "LinkedIn Learning").length,
+    all: certifications.length,
+    coursera: certifications.filter((c) => c.platform === "Coursera").length,
+    linkedin: certifications.filter((c) => c.platform === "LinkedIn Learning").length,
   };
 
   const tabs: { key: Filter; label: string }[] = [

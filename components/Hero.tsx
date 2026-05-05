@@ -4,16 +4,15 @@ import { useEffect, useState } from "react";
 import { Download, Mail, Phone } from "lucide-react";
 import { LinkedinIcon, StackOverflowIcon, GithubIcon } from "@/components/SocialIcons";
 import Image from "next/image";
+import { personalInfo, heroRoles } from "@/data/config";
 
-const roles = [
-  "Senior Mobile Engineer",
-  "🤖 AI & GenAI Engineer",
-  "Android & Kotlin Expert",
-  "Flutter Developer",
-  "React Native Engineer",
-  "React.js / Next.js Dev",
-  "Tech Lead & Mentor",
-];
+const iconMap = {
+  LinkedinIcon,
+  GithubIcon,
+  StackOverflowIcon,
+  Mail,
+  Phone,
+};
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -22,7 +21,7 @@ export default function Hero() {
   const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
-    const current = roles[roleIndex];
+    const current = heroRoles[roleIndex];
     const t = setTimeout(() => {
       if (!isDeleting) {
         setDisplayed(current.slice(0, displayed.length + 1));
@@ -32,7 +31,7 @@ export default function Hero() {
         setDisplayed(current.slice(0, displayed.length - 1));
         if (displayed.length === 0) {
           setIsDeleting(false);
-          setRoleIndex((p) => (p + 1) % roles.length);
+          setRoleIndex((p) => (p + 1) % heroRoles.length);
         }
       }
     }, isDeleting ? 45 : 95);
@@ -56,7 +55,8 @@ export default function Hero() {
 
           {/* Name */}
           <h1 className="text-5xl md:text-6xl font-black text-[#111827] mb-2 leading-tight">
-            Suresh <span className="text-[#1b63e8]">Kumar</span>
+            {personalInfo.firstName}{" "}
+            <span className="text-[#1b63e8]">{personalInfo.lastName}</span>
           </h1>
 
           {/* Role — large yellow */}
@@ -69,14 +69,12 @@ export default function Hero() {
 
           {/* Sub-title */}
           <p className="text-[#6b7280] text-sm font-mono tracking-widest uppercase mb-5">
-            Senior Manager · Software Development · 12+ Years
+            {personalInfo.subtitle} · {personalInfo.yearsExperience} Years
           </p>
 
           {/* Description */}
           <p className="text-[#374151] text-lg leading-relaxed mb-8 max-w-lg">
-            Full Stack Developer bridging mobile, web, and intelligent AI systems — 
-            with hands-on expertise in RAG pipelines, agentic AI, MCP servers, and 
-            LLM-powered applications.
+            {personalInfo.summary}
           </p>
 
           {/* CTAs */}
@@ -100,24 +98,21 @@ export default function Hero() {
 
           {/* Social icons */}
           <div className="flex items-center gap-3">
-            {[
-              { icon: LinkedinIcon, href: "https://www.linkedin.com/in/suresh-kumar-14726a74/", label: "LinkedIn" },
-              { icon: GithubIcon, href: "https://github.com/sarry173", label: "GitHub" },
-              { icon: StackOverflowIcon, href: "https://stackoverflow.com/users/3367381/suresh-kum", label: "Stack Overflow" },
-              { icon: Mail, href: "mailto:suresh.my1989@gmail.com", label: "Email" },
-              { icon: Phone, href: "tel:+919867699779", label: "Phone" },
-            ].map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target={label !== "Email" && label !== "Phone" ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="w-11 h-11 rounded-xl bg-[#f0f5ff] border border-[#dbe4f5] flex items-center justify-center text-[#1b63e8] hover:bg-[#1b63e8] hover:text-white hover:border-[#1b63e8] transition-all duration-200 hover:scale-110"
-              >
-                <Icon className="w-5 h-5" />
-              </a>
-            ))}
+            {personalInfo.socials.map(({ iconName, href, label }) => {
+              const Icon = iconMap[iconName];
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  target={label !== "Email" && label !== "Phone" ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-11 h-11 rounded-xl bg-[#f0f5ff] border border-[#dbe4f5] flex items-center justify-center text-[#1b63e8] hover:bg-[#1b63e8] hover:text-white hover:border-[#1b63e8] transition-all duration-200 hover:scale-110"
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              );
+            })}
           </div>
         </div>
 
@@ -144,8 +139,8 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-3xl overflow-hidden z-10 border-4 border-white shadow-2xl">
               {!imgError ? (
                 <Image
-                  src="/profile.jpg"
-                  alt="Suresh Kumar"
+                  src={personalInfo.profileImage}
+                  alt={personalInfo.name}
                   fill
                   className="object-cover object-top"
                   onError={() => setImgError(true)}
@@ -153,21 +148,21 @@ export default function Hero() {
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-[#1b63e8]/20 to-[#f5b800]/20 flex items-center justify-center text-6xl font-black text-[#1b63e8]">
-                  SK
+                  {personalInfo.initials}
                 </div>
               )}
             </div>
 
             {/* Years badge */}
             <div className="absolute -bottom-4 -left-4 z-20 w-20 h-20 rounded-2xl bg-[#f5b800] shadow-lg flex flex-col items-center justify-center rotate-[-4deg] animate-float">
-              <span className="text-2xl font-black text-[#111827] leading-none">12+</span>
+              <span className="text-2xl font-black text-[#111827] leading-none">{personalInfo.yearsExperience}</span>
               <span className="text-[9px] font-bold text-[#111827]/70 uppercase tracking-wide leading-tight text-center">Years<br />Exp.</span>
             </div>
 
             {/* Available badge */}
             <div className="absolute -top-3 -right-3 z-20 px-3 py-2 rounded-xl bg-white shadow-lg border border-[#e2e8f0] flex items-center gap-2 animate-float" style={{ animationDelay: "1.5s" }}>
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-semibold text-[#374151]">Open to Roles</span>
+              <span className="text-xs font-semibold text-[#374151]">{personalInfo.availabilityStatus}</span>
             </div>
           </div>
         </div>

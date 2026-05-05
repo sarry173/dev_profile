@@ -3,14 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Mail, Send, MapPin, Phone, CheckCircle, Calendar } from "lucide-react";
 import { LinkedinIcon, StackOverflowIcon, GithubIcon } from "@/components/SocialIcons";
+import { personalInfo } from "@/data/config";
 
-const socials = [
-  { icon: LinkedinIcon, label: "LinkedIn", handle: "suresh-kumar-14726a74", href: "https://www.linkedin.com/in/suresh-kumar-14726a74/", color: "#0077b5" },
-  { icon: GithubIcon, label: "GitHub", handle: "suresh-kumar", href: "https://github.com/sarry173", color: "#111827" },
-  { icon: StackOverflowIcon, label: "Stack Overflow", handle: "suresh-kum", href: "https://stackoverflow.com/users/3367381/suresh-kum", color: "#f48024" },
-  { icon: Mail, label: "Email", handle: "suresh.my1989@gmail.com", href: "mailto:suresh.my1989@gmail.com", color: "#1b63e8" },
-  { icon: Phone, label: "Phone", handle: "+91-9867699779", href: "tel:+919867699779", color: "#f5b800" },
-];
+const iconMap = {
+  LinkedinIcon,
+  GithubIcon,
+  StackOverflowIcon,
+  Mail,
+  Phone,
+};
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,8 +30,7 @@ export default function Contact() {
 
   const handleSubmit = (e: { preventDefault(): void }) => {
     e.preventDefault();
-    const recipient = "suresh.my1989@gmail.com";
-    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
+    window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
     setSubmitted(true);
     setForm({ name: "", email: "", subject: "", message: "" });
   };
@@ -55,12 +55,13 @@ export default function Contact() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               <span className="text-[#374151] text-sm font-semibold">
-                Available for senior roles starting <span className="text-[#f5b800] font-bold">June 2026</span>
+                Available for senior roles starting{" "}
+                <span className="text-[#f5b800] font-bold">{personalInfo.availability}</span>
               </span>
             </div>
             <span className="text-[#d1d5db] hidden sm:block">·</span>
             <a
-              href="mailto:suresh.my1989@gmail.com?subject=Intro%20Call%20Request&body=Hi%20Suresh%2C%20I%27d%20like%20to%20schedule%20a%2020-min%20intro%20call."
+              href={`mailto:${personalInfo.email}?subject=Intro%20Call%20Request&body=Hi%20${encodeURIComponent(personalInfo.firstName)}%2C%20I%27d%20like%20to%20schedule%20a%2020-min%20intro%20call.`}
               className="flex items-center gap-1.5 text-[#1b63e8] text-sm font-bold hover:text-[#f5b800] transition-colors"
             >
               <Calendar className="w-4 h-4" />
@@ -84,9 +85,9 @@ export default function Contact() {
               {/* Contact details */}
               <div className="space-y-4 mb-8">
                 {[
-                  { icon: MapPin, label: "Location", value: "Mumbai, IN 400070 · Open to Relocation", color: "#1b63e8", bg: "#eef3ff" },
-                  { icon: Mail, label: "Email", value: "suresh.my1989@gmail.com", href: "mailto:suresh.my1989@gmail.com", color: "#f5b800", bg: "#fffbeb" },
-                  { icon: Phone, label: "Phone", value: "+91-9867699779", href: "tel:+919867699779", color: "#1b63e8", bg: "#eef3ff" },
+                  { icon: MapPin, label: "Location", value: personalInfo.locationFull, color: "#1b63e8", bg: "#eef3ff" },
+                  { icon: Mail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}`, color: "#f5b800", bg: "#fffbeb" },
+                  { icon: Phone, label: "Phone", value: personalInfo.phone.formatted, href: `tel:${personalInfo.phone.raw}`, color: "#1b63e8", bg: "#eef3ff" },
                 ].map(({ icon: Icon, label, value, href, color, bg }) => (
                   <div key={label} className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: bg }}>
@@ -106,21 +107,24 @@ export default function Contact() {
               <div className="h-px bg-[#e2e8f0] mb-6" />
               <p className="text-[#9ca3af] text-xs uppercase tracking-widest font-mono mb-4">Find me on</p>
               <div className="grid grid-cols-2 gap-3">
-                {socials.map(({ icon: Icon, label, handle, href, color }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target={label !== "Phone" ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-[#f8faff] hover:bg-[#eef3ff] border border-[#e2e8f0] hover:border-[#1b63e8]/30 transition-all duration-200 group"
-                  >
-                    <Icon className="w-4 h-4 flex-shrink-0" style={{ color }} />
-                    <div className="min-w-0">
-                      <p className="text-[#374151] text-xs font-semibold group-hover:text-[#1b63e8] transition-colors">{label}</p>
-                      <p className="text-[#9ca3af] text-xs font-mono truncate">{handle}</p>
-                    </div>
-                  </a>
-                ))}
+                {personalInfo.socials.map(({ iconName, label, handle, href, color }) => {
+                  const Icon = iconMap[iconName];
+                  return (
+                    <a
+                      key={label}
+                      href={href}
+                      target={label !== "Phone" ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-3 rounded-xl bg-[#f8faff] hover:bg-[#eef3ff] border border-[#e2e8f0] hover:border-[#1b63e8]/30 transition-all duration-200 group"
+                    >
+                      <Icon className="w-4 h-4 flex-shrink-0" style={{ color }} />
+                      <div className="min-w-0">
+                        <p className="text-[#374151] text-xs font-semibold group-hover:text-[#1b63e8] transition-colors">{label}</p>
+                        <p className="text-[#9ca3af] text-xs font-mono truncate">{handle}</p>
+                      </div>
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
