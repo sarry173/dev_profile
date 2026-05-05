@@ -18,7 +18,7 @@ const experience = [
     bullets: [
       "Lead end-to-end development of Android and Flutter applications serving 100K+ Jio enterprise employees.",
       "Own the full SDLC — technical design, effort estimation, coding, peer reviews, QA/UAT, production deployment, and post-launch support.",
-      "Established SonarQube and PMD quality gates that measurably reduced code defect density across the team.",
+      "Established SonarQube and PMD quality gates that reduced code defect density by 30% across the team.",
       "Primary technical point of contact for business stakeholders; facilitated sprint planning and release cycles using Agile methodology.",
       "Mentored junior and mid-level engineers, conducting structured code reviews and knowledge-sharing sessions.",
     ],
@@ -35,8 +35,9 @@ const experience = [
       "Built cross-platform apps using Flutter (BLoC/GetX) and React Native (Redux), reducing time-to-market by reusing business logic across platforms.",
       "Integrated SAP SDK, SOAP, REST, GraphQL, and Firebase backends into production applications.",
       "Collaborated with cross-functional Agile teams; optimized app performance via profiling, refactoring, and systematic code reviews.",
+      "Implemented unit testing with JUnit and integrated Docker containers for CI/CD pipelines.",
     ],
-    techs: "Android · Kotlin · Java · Flutter · React Native · SAP SDK · SOAP · REST · Firebase · Agile",
+    techs: "Android · Kotlin · Java · Flutter · React Native · SAP SDK · SOAP · REST · Firebase · Agile · JUnit · Docker",
   },
   {
     role: "Software Developer Intern",
@@ -387,6 +388,24 @@ export default async function ResumePage({
                 <div className="text-right flex-shrink-0">
                   <p className="text-[13px] font-semibold text-[#374151]">Graduated Jun 2012</p>
                   <p className="text-[12px] text-[#9ca3af]">Himachal Pradesh, India</p>
+                </div>
+              </div>
+            </section>
+
+            {/* CERTIFICATIONS */}
+            <section className="resume-section">
+              <h2 className="section-h2 text-[10px] font-black uppercase tracking-[0.15em] text-[#1b63e8] border-b border-[#dbe4f5] pb-1.5 mb-3">
+                Certifications
+              </h2>
+              <div className="keep-together flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-[15px] font-black text-[#111827]">
+                    Certified AWS Developer – Associate
+                  </h3>
+                  <p className="edu-org text-[#1b63e8] font-semibold text-[13px]">Amazon Web Services (AWS)</p>
+                </div>
+                <div className="text-right flex-shrink-0">
+                  <p className="text-[13px] font-semibold text-[#374151]">2023</p>
                 </div>
               </div>
             </section>

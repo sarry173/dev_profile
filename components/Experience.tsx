@@ -11,7 +11,7 @@ const experiences = [
     period: "Feb 2024 – Present",
     location: "Mumbai, India",
     description:
-      "Leading end-to-end development of Android and Flutter applications serving 100K+ Jio employees. Own the complete SDLC — technical design, effort estimation, coding, peer reviews (PMD, SonarQube), QA/UAT, production deployment, and post-launch support. Established SonarQube quality gates that reduced code defect density. Primary technical point of contact for business stakeholders.",
+      "Leading end-to-end development of Android and Flutter applications serving 100K+ Jio employees. Own the complete SDLC — technical design, effort estimation, coding, peer reviews (PMD, SonarQube), QA/UAT, production deployment, and post-launch support. Established SonarQube and PMD quality gates that reduced code defect density by 30% across the team. Primary technical point of contact for business stakeholders.",
     techs: ["Kotlin", "Android", "Flutter", "MVVM", "Firebase", "SonarQube"],
   },
   {
@@ -21,8 +21,8 @@ const experiences = [
     period: "Jul 2013 – Dec 2023",
     location: "Chandigarh, India",
     description:
-      "Delivered 15+ enterprise mobile applications across a decade of evolving Android ecosystem — from SDK 2.1 through modern Kotlin and Flutter. Designed and architected mobile platforms for Fortune 500 clients including Reliance Industries. Collaborated with cross-functional Agile teams and systematically optimized performance through code reviews and refactoring.",
-    techs: ["Android", "Kotlin", "Java", "Flutter", "SAP SDK", "SOAP", "REST", "Firebase"],
+      "Delivered 15+ enterprise mobile applications across a decade of evolving Android ecosystem — from SDK 2.1 through modern Kotlin and Flutter. Designed and architected mobile platforms for Fortune 500 clients including Reliance Industries. Collaborated with cross-functional Agile teams and systematically optimized performance through code reviews and refactoring. Implemented unit testing with JUnit and integrated Docker containers for CI/CD pipelines.",
+    techs: ["Android", "Kotlin", "Java", "Flutter", "SAP SDK", "SOAP", "REST", "Firebase", "JUnit", "Docker"],
   },
   {
     type: "work",
