@@ -113,6 +113,21 @@ export default function Navbar() {
           >
             Resume
           </a>
+          <a
+            href="/cover-letter"
+            className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+            style={{ color: "var(--fg-3)" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "var(--accent)";
+              (e.currentTarget as HTMLElement).style.background = "var(--accent-o5)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "var(--fg-3)";
+              (e.currentTarget as HTMLElement).style.background = "transparent";
+            }}
+          >
+            Cover Letter
+          </a>
 
           <ThemeToggle />
 
@@ -181,6 +196,13 @@ export default function Navbar() {
           >
             Resume
           </a>
+          {/* <a
+            href="/cover-letter"
+            className="text-left px-4 py-3 rounded-xl transition-all font-medium"
+            style={{ color: "var(--fg-2)" }}
+          >
+            Cover Letter
+          </a> */}
           <button
             onClick={() => go("#contact")}
             className="mt-2 px-5 py-3 rounded-xl font-bold text-center"

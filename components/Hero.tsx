@@ -145,6 +145,24 @@ export default function Hero() {
               <Download className="w-4 h-4" />
               Download CV
             </a>
+            <a
+              href="/cover-letter"
+              className="px-8 py-4 rounded-xl border-2 font-bold text-base hover:scale-105 transition-all duration-200 flex items-center gap-2"
+              style={{
+                borderColor: "var(--accent-2)",
+                color: "var(--accent-2)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "var(--accent-2)";
+                (e.currentTarget as HTMLElement).style.color = "#111827";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "transparent";
+                (e.currentTarget as HTMLElement).style.color = "var(--accent-2)";
+              }}
+            >
+              Cover Letter
+            </a>
           </div>
 
           {/* Social icons */}
