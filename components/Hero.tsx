@@ -145,7 +145,7 @@ export default function Hero() {
               <Download className="w-4 h-4" />
               Download CV
             </a>
-            <a
+            {/* <a
               href="/cover-letter"
               className="px-8 py-4 rounded-xl border-2 font-bold text-base hover:scale-105 transition-all duration-200 flex items-center gap-2"
               style={{
@@ -162,7 +162,7 @@ export default function Hero() {
               }}
             >
               Cover Letter
-            </a>
+            </a> */}
           </div>
 
           {/* Social icons */}
