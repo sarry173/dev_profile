@@ -10,7 +10,7 @@ type Filter = "all" | "featured" | "mobile" | "web" | "ai";
 export default function Projects() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [filter, setFilter]   = useState<Filter>("featured");
+  const [filter, setFilter] = useState<Filter>("featured");
 
   useEffect(() => {
     const ob = new IntersectionObserver(
@@ -23,17 +23,17 @@ export default function Projects() {
 
   const filtered =
     filter === "featured" ? projects.filter((p) => p.featured) :
-    filter === "mobile"   ? projects.filter((p) => p.type === "mobile") :
-    filter === "web"      ? projects.filter((p) => p.type === "web") :
-    filter === "ai"       ? projects.filter((p) => p.type === "ai") :
-    projects;
+      filter === "mobile" ? projects.filter((p) => p.type === "mobile") :
+        filter === "web" ? projects.filter((p) => p.type === "web") :
+          filter === "ai" ? projects.filter((p) => p.type === "ai") :
+            projects;
 
   const tabs: { key: Filter; label: string }[] = [
-    { key: "all",      label: `All (${projects.length})` },
+    { key: "all", label: `All (${projects.length})` },
     { key: "featured", label: "⭐ Featured" },
-    { key: "mobile",   label: "📱 Mobile" },
-    { key: "web",      label: "🌐 Web" },
-    { key: "ai",       label: "🤖 AI" },
+    { key: "mobile", label: "📱 Mobile" },
+    { key: "web", label: "🌐 Web" },
+    { key: "ai", label: "🤖 AI" },
   ];
 
   return (
@@ -73,10 +73,10 @@ export default function Projects() {
                 filter === key
                   ? { background: "var(--accent)", color: "#fff" }
                   : {
-                      background: "var(--surface)",
-                      color: "var(--fg-3)",
-                      border: "1px solid var(--border-light)",
-                    }
+                    background: "var(--surface)",
+                    color: "var(--fg-3)",
+                    border: "1px solid var(--border-light)",
+                  }
               }
               onMouseEnter={(e) => {
                 if (filter !== key) {
@@ -101,9 +101,8 @@ export default function Projects() {
           {filtered.map((p, i) => (
             <div
               key={p.title}
-              className={`group rounded-2xl border transition-all duration-300 overflow-hidden hover:-translate-y-1 ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`group rounded-2xl border transition-all duration-300 overflow-hidden hover:-translate-y-1 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{
                 background: "var(--card-bg)",
                 borderColor: p.highlight ? "#7c3aed" : "var(--border)",
@@ -221,7 +220,7 @@ export default function Projects() {
                       }
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      View on Play Store
+                      {p.live.includes("play.google.com") ? "View on Play Store" : "View on Web"}
                     </a>
                   ) : (
                     <span

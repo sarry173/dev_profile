@@ -113,7 +113,7 @@ export default function Navbar() {
           >
             Resume
           </a>
-          <a
+          {/* <a
             href="/cover-letter"
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
             style={{ color: "var(--fg-3)" }}
@@ -127,7 +127,7 @@ export default function Navbar() {
             }}
           >
             Cover Letter
-          </a>
+          </a> */}
 
           <ThemeToggle />
 

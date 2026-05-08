@@ -26,7 +26,7 @@ export const personalInfo = {
   availabilityStatus: "Open to Roles",
 
   currentRole: "Senior Manager Software Development",
-  currentCompany: "Reliance Jio",
+  currentCompany: "Jio Platforms Limited",
   currentScope: "leading Android & Flutter teams serving 100K+ enterprise employees",
 
   portfolioUrl: "sureshkumar-dev.vercel.app",
@@ -95,7 +95,7 @@ export const personalInfo = {
 export const seoMetadata = {
   title: "Suresh Kumar — Senior Mobile Engineer & Full Stack Developer",
   description:
-    "Full Stack Developer with 12+ years of experience. Senior Manager at Reliance Jio. Expert in Android, Flutter, React Native, React.js, Next.js, Angular — and AI Engineering including RAG pipelines, Agentic AI, MCP servers, and LLM-powered applications built on Anthropic Claude.",
+    "Full Stack Developer with 12+ years of experience. Senior Manager at Jio Platforms Limited. Expert in Android, Flutter, React Native, React.js, Next.js, Angular — and AI Engineering including RAG pipelines, Agentic AI, MCP servers, and LLM-powered applications built on Anthropic Claude.",
   keywords: [
     "Senior Mobile Engineer",
     "Android Developer",
@@ -113,7 +113,7 @@ export const seoMetadata = {
     "Mumbai",
     "India",
     "remote",
-    "Reliance Jio",
+    "Jio Platforms Limited",
     "Android tech lead",
     "Flutter tech lead",
     "mobile development India",
@@ -142,7 +142,7 @@ export const seoMetadata = {
   resumeTitle:
     "Suresh Kumar — Resume | Senior Mobile Engineer & Full Stack Developer",
   resumeDescription:
-    "Resume of Suresh Kumar — Senior Mobile Engineer, Full Stack Developer, and AI Engineer with 12+ years of experience at Reliance Jio.",
+    "Resume of Suresh Kumar — Senior Mobile Engineer, Full Stack Developer, and AI Engineer with 12+ years of experience at Jio Platforms Limited.",
 };
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
@@ -292,7 +292,7 @@ export const timeline: TimelineEntry[] = [
   {
     type: "work",
     role: "Senior Manager Software Development",
-    company: "Reliance Jio",
+    company: "Jio Platforms Limited",
     period: "Feb 2024 – Present",
     location: "Mumbai, India",
     description:
@@ -385,6 +385,133 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  // ── Active / Live-link projects ─────────────────────────────────────────────
+  {
+    title: "LEARNET-RIL",
+    description:
+      "Video and text-based interactive learning platform for Reliance employees to share knowledge, success stories, and connect with subject-matter experts. Published on the Play Store.",
+    resumeDescription:
+      "Video and text-based interactive e-learning platform for Reliance employees to share knowledge and connect with subject-matter experts. Published on the Play Store.",
+    image: "🎓",
+    tags: ["Android", "Kotlin", "SQLite", "ExoPlayer", "Firebase"],
+    resumeTechs: "Android, Kotlin, SQLite, ExoPlayer, Firebase",
+    live: "https://play.google.com/store/apps/details?id=com.ril.learnet",
+    featured: true,
+    color: "#1b63e8",
+    bg: "#eef3ff",
+    client: "Reliance Industries",
+    type: "mobile",
+    resumeInclude: true,
+    resumeType: "Android",
+  },
+  {
+    title: "Engage",
+    description:
+      "Automated Flutter platform to send WhatsApp messages to channel partners, sales teams, and stakeholders — streamlining B2B communications at scale.",
+    image: "💬",
+    tags: ["Flutter", "Dart", "Firebase"],
+    live: "https://play.google.com/store/apps/details?id=com.qsts.engage&hl=en_IN",
+    featured: false,
+    color: "#10b981",
+    bg: "#ecfdf5",
+    client: "QSTS", resumeInclude: true,
+    type: "mobile",
+  },
+  {
+    title: "Vidhayak Sewa Kendra",
+    description:
+      "Civic grievance app that lets citizens easily register complaints with their local legislative representative (MLA), track resolution status in real-time, and receive direct updates from the Vidhayak's office — fostering transparent and responsive governance.",
+    image: "🏛️",
+    tags: ["Flutter", "Dart", "Firebase", "REST API"],
+    live: "https://play.google.com/store/apps/details?id=com.qsts.mhc&hl=en_IN",
+    featured: false,
+    color: "#f59e0b",
+    bg: "#fffbeb", resumeInclude: true,
+    client: "QSTS",
+    type: "mobile",
+  },
+  {
+    title: "Mission Kurukshetra",
+    description:
+      "Flutter platform for Reliance employees to submit innovative ideas and get rewarded by the Reliance Foundation — with rich media and offline support.",
+    resumeDescription:
+      "Flutter platform for Reliance employees to submit and get rewarded for innovative ideas by the Reliance Foundation — with rich media and offline support.",
+    image: "💡",
+    tags: ["Flutter", "Dart", "SOAP", "Firebase", "Fabric"],
+    resumeTechs: "Flutter, Dart, SOAP, Firebase, Fabric",
+    live: "https://play.google.com/store/apps/details?id=com.ril.mku",
+    featured: true,
+    color: "#f5b800",
+    bg: "#fffbeb",
+    client: "Reliance Industries",
+    type: "mobile",
+    resumeInclude: true,
+    resumeType: "Flutter",
+  },
+  {
+    title: "Share-A-Ride",
+    description:
+      "Carpooling app for Reliance employees using intelligent route-matching and real-time GPS tracking with colleague verification. Available on the Play Store.",
+    resumeDescription:
+      "Carpooling app for Reliance employees with intelligent route-matching and real-time GPS tracking. Available on the Play Store.",
+    image: "🚗",
+    tags: ["Android", "Kotlin", "Firebase", "Google Maps", "FCM"],
+    resumeTechs: "Android, Kotlin, Firebase, Google Maps, FCM",
+    live: "https://play.google.com/store/apps/details?id=com.ril.shareAride",
+    featured: true,
+    color: "#ef4444",
+    bg: "#fef2f2",
+    client: "Reliance Industries",
+    type: "mobile",
+    resumeInclude: true,
+    resumeType: "Android",
+  },
+  {
+    title: "JioContracts",
+    description:
+      "Jio Platforms' Contract Lifecycle Management (CLM) platform — bridging mobile and web interfaces to streamline contract creation, negotiation, and renewal. Delivers intuitive navigation, real-time updates, secure document storage, and compliance tooling for enterprise teams.",
+    resumeDescription:
+      "Contract Lifecycle Management (CLM) platform for Jio Platforms — streamlines creation, negotiation, and renewal with real-time updates, secure document storage, and compliance tooling across mobile and web.",
+    image: "📋",
+    tags: ["Flutter", "Dart", "REST API", "Firebase", "Enterprise"],
+    resumeTechs: "Flutter, Dart, REST API, Firebase",
+    live: "https://pncplatformdev.ril.com/jiocontracts/",
+    featured: true,
+    color: "#02569B",
+    bg: "#e1f0fa",
+    client: "Jio Platforms Limited",
+    type: "web",
+    resumeInclude: true,
+    resumeType: "Flutter",
+  },
+  {
+    title: "Reliance CRM",
+    description:
+      "Real-time CRM for division-wise order/invoice management, order status tracking, and customer summaries with analytics dashboard.",
+    image: "📊",
+    tags: ["Android", "SAP Android SDK", "SOAP", "MpCharts"],
+    live: "https://play.google.com/store/apps/details?id=com.ril.crm",
+    featured: false,
+    color: "#1b63e8",
+    bg: "#eef3ff", resumeInclude: true,
+    client: "Reliance Industries",
+    type: "mobile",
+  },
+
+  {
+    title: "Cattlefax",
+    description:
+      "Livestock industry data app — live price feeds, dynamic charts, industry news, and real-time weather forecasts with GCM push notifications.",
+    image: "🐄",
+    tags: ["Android", "SOAP", "Shinobi Charts", "GCM"],
+    live: "https://play.google.com/store/apps/details?id=com.cattlefax.main",
+    featured: false,
+    color: "#f5b800",
+    bg: "#fffbeb",
+    client: "Cattlefax USA",
+    type: "mobile",
+  },
+  // ── Projects without a public link ──────────────────────────────────────────
   {
     title: "Code Migration Agent + MCP Server",
     description:
@@ -455,60 +582,6 @@ export const projects: Project[] = [
     type: "ai",
   },
   {
-    title: "LEARNET-RIL",
-    description:
-      "Video and text-based interactive learning platform for Reliance employees to share knowledge, success stories, and connect with subject-matter experts. Published on the Play Store.",
-    resumeDescription:
-      "Video and text-based interactive e-learning platform for Reliance employees to share knowledge and connect with subject-matter experts. Published on the Play Store.",
-    image: "🎓",
-    tags: ["Android", "Kotlin", "SQLite", "ExoPlayer", "Firebase"],
-    resumeTechs: "Android, Kotlin, SQLite, ExoPlayer, Firebase",
-    live: "https://play.google.com/store/apps/details?id=com.ril.learnet",
-    featured: true,
-    color: "#1b63e8",
-    bg: "#eef3ff",
-    client: "Reliance Industries",
-    type: "mobile",
-    resumeInclude: true,
-    resumeType: "Android",
-  },
-  {
-    title: "Mission Kurukshetra",
-    description:
-      "Flutter platform for Reliance employees to submit innovative ideas and get rewarded by the Reliance Foundation — with rich media and offline support.",
-    resumeDescription:
-      "Flutter platform for Reliance employees to submit and get rewarded for innovative ideas by the Reliance Foundation — with rich media and offline support.",
-    image: "💡",
-    tags: ["Flutter", "Dart", "SOAP", "Firebase", "Fabric"],
-    resumeTechs: "Flutter, Dart, SOAP, Firebase, Fabric",
-    live: "https://play.google.com/store/apps/details?id=com.ril.mku",
-    featured: true,
-    color: "#f5b800",
-    bg: "#fffbeb",
-    client: "Reliance Industries",
-    type: "mobile",
-    resumeInclude: true,
-    resumeType: "Flutter",
-  },
-  {
-    title: "Share-A-Ride",
-    description:
-      "Carpooling app for Reliance employees using intelligent route-matching and real-time GPS tracking with colleague verification. Available on the Play Store.",
-    resumeDescription:
-      "Carpooling app for Reliance employees with intelligent route-matching and real-time GPS tracking. Available on the Play Store.",
-    image: "🚗",
-    tags: ["Android", "Kotlin", "Firebase", "Google Maps", "FCM"],
-    resumeTechs: "Android, Kotlin, Firebase, Google Maps, FCM",
-    live: "https://play.google.com/store/apps/details?id=com.ril.shareAride",
-    featured: true,
-    color: "#ef4444",
-    bg: "#fef2f2",
-    client: "Reliance Industries",
-    type: "mobile",
-    resumeInclude: true,
-    resumeType: "Android",
-  },
-  {
     title: "JIO-HRU",
     description:
       "Jio HR companion app — employees view payslips, tax projections, HR details, and manage the entire candidate onboarding workflow digitally.",
@@ -519,49 +592,10 @@ export const projects: Project[] = [
     featured: true,
     color: "#8b5cf6",
     bg: "#f5f3ff",
-    client: "Reliance Jio",
+    client: "Jio Platforms Limited",
     type: "mobile",
     resumeInclude: true,
     resumeType: "Android",
-  },
-  {
-    title: "Reliance CRM",
-    description:
-      "Real-time CRM for division-wise order/invoice management, order status tracking, and customer summaries with analytics dashboard.",
-    image: "📊",
-    tags: ["Android", "SAP Android SDK", "SOAP", "MpCharts"],
-    live: "https://play.google.com/store/apps/details?id=com.ril.crm",
-    featured: false,
-    color: "#1b63e8",
-    bg: "#eef3ff",
-    client: "Reliance Industries",
-    type: "mobile",
-  },
-  {
-    title: "Engage",
-    description:
-      "Automated Flutter platform to send WhatsApp messages to channel partners, sales teams, and stakeholders — streamlining B2B communications at scale.",
-    image: "💬",
-    tags: ["Flutter", "Dart", "Firebase"],
-    live: null,
-    featured: false,
-    color: "#10b981",
-    bg: "#ecfdf5",
-    client: "QSTS",
-    type: "mobile",
-  },
-  {
-    title: "Cattlefax",
-    description:
-      "Livestock industry data app — live price feeds, dynamic charts, industry news, and real-time weather forecasts with GCM push notifications.",
-    image: "🐄",
-    tags: ["Android", "SOAP", "Shinobi Charts", "GCM"],
-    live: "https://play.google.com/store/apps/details?id=com.cattlefax.main",
-    featured: false,
-    color: "#f5b800",
-    bg: "#fffbeb",
-    client: "Cattlefax USA",
-    type: "mobile",
   },
   {
     title: "Trance-ACT",
@@ -569,9 +603,9 @@ export const projects: Project[] = [
       "Fleet cash loading app that accelerates cash/cheque loading workflows with barcode scanning and detailed reporting.",
     image: "💰",
     tags: ["Android", "Kotlin", "SOAP", "Reporting"],
-    live: null,
+    live: "https://play.google.com/store/apps/details?id=com.ril.cashloading",
     featured: false,
-    color: "#1b63e8",
+    color: "#1b63e8", resumeInclude: true,
     bg: "#eef3ff",
     client: "Reliance Industries",
     type: "mobile",
@@ -598,7 +632,7 @@ export const projects: Project[] = [
     image: "🌐",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     resumeTechs: "Next.js, TypeScript, Tailwind CSS, Vercel",
-    live: null,
+    live: "https://sureshkumar-dev.vercel.app/",
     featured: true,
     color: "#8b5cf6",
     bg: "#f5f3ff",
@@ -659,7 +693,7 @@ export const projects: Project[] = [
     featured: false,
     color: "#f5b800",
     bg: "#fffbeb",
-    client: "Reliance Jio",
+    client: "Jio Platforms Limited",
     type: "web",
   },
 ];
@@ -838,7 +872,7 @@ export const resumeSkills: Record<string, string[]> = {
 export const resumeSummary =
   `Full Stack Developer and Senior Manager with 12+ years of end-to-end software delivery — ` +
   `from Android SDK 2.1 to modern Kotlin, Flutter, and cross-platform mobile, through to React.js / Next.js ` +
-  `web frontends and AI-powered backends. Currently at Reliance Jio leading Android and Flutter teams whose ` +
+  `web frontends and AI-powered backends. Currently at Jio Platforms Limited leading Android and Flutter teams whose ` +
   `apps serve 100,000+ enterprise employees. Proven track record delivering 20+ production apps for Fortune 500 ` +
   `clients including Reliance Industries. Hands-on expertise in Generative AI engineering — RAG pipelines, ` +
   `agentic AI systems, MCP server design, and LLM integration using Anthropic Claude, OpenAI, and LangChain. ` +
