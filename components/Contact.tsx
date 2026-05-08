@@ -37,8 +37,8 @@ export default function Contact() {
 
   const contactDetails = [
     { icon: MapPin, label: "Location", value: personalInfo.locationFull, href: undefined, bg: "var(--surface-accent)", color: "var(--accent)" },
-    { icon: Mail,   label: "Email",    value: personalInfo.email, href: `mailto:${personalInfo.email}`, bg: "var(--surface-accent-2)", color: "var(--accent-2)" },
-    { icon: Phone,  label: "Phone",    value: personalInfo.phone.formatted, href: `tel:${personalInfo.phone.raw}`, bg: "var(--surface-accent)", color: "var(--accent)" },
+    { icon: Mail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}`, bg: "var(--surface-accent-2)", color: "var(--accent-2)" },
+    { icon: Phone, label: "Phone", value: personalInfo.phone.formatted, href: `tel:${personalInfo.phone.raw}`, bg: "var(--surface-accent)", color: "var(--accent)" },
   ];
 
   return (
@@ -99,7 +99,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
+        <div className="gap-10 items-start">
           {/* Left: info */}
           <div
             className={`transition-all duration-700 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
@@ -215,7 +215,7 @@ export default function Contact() {
           </div>
 
           {/* Right: form */}
-          <div
+          {/* <div
             className={`transition-all duration-700 delay-200 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
           >
             {submitted ? (
@@ -355,7 +355,7 @@ export default function Contact() {
                 </button>
               </form>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
