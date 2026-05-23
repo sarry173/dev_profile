@@ -24,11 +24,11 @@ function CertModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
     >
       <div className="absolute inset-0 bg-[#0f172a]/70" />
 
-      <div className="relative z-10 w-full max-w-4xl h-[90vh] flex flex-col md:flex-row rounded-3xl overflow-hidden shadow-2xl">
+      <div className="relative z-10 w-full max-w-md md:max-w-4xl h-auto max-h-[90vh] md:h-[90vh] flex flex-col md:flex-row rounded-3xl overflow-hidden shadow-2xl">
 
         {/* ── Left panel: cert details ── */}
         <div
-          className="md:w-[280px] flex-shrink-0 flex flex-col justify-between p-7"
+          className="w-full md:w-[280px] flex-shrink-0 flex flex-col justify-between p-6 md:p-7 overflow-y-auto"
           style={{ background: `linear-gradient(145deg, ${cert.color}ee, ${cert.color}88)` }}
         >
           <div>
@@ -90,7 +90,7 @@ function CertModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
 
         {/* ── Right panel: PDF viewer ── */}
         <div
-          className="flex-1 flex flex-col min-h-0"
+          className="hidden md:flex flex-1 flex-col min-h-0"
           style={{ background: "color-mix(in srgb, var(--card-bg) 85%, transparent)", backdropFilter: "blur(24px)" }}
         >
           <div
